@@ -1,0 +1,65 @@
+[
+  {
+    "repository": "google/flax",
+    "revision": "01854da11286b4109c59d7fd9205f3822fe807d6",
+    "source_path": "examples/imagenet/models.py",
+    "url": "https://raw.githubusercontent.com/google/flax/01854da11286b4109c59d7fd9205f3822fe807d6/examples/imagenet/models.py",
+    "local_path": "validation/originals/flax_imagenet/models.py",
+    "bytes": 4373,
+    "sha256": "cd354ca3990ae35c3529e680b7d6e91f273508aa3cc087f03fdf41699063fb50"
+  },
+  {
+    "repository": "google/flax",
+    "revision": "01854da11286b4109c59d7fd9205f3822fe807d6",
+    "source_path": "examples/imagenet/train.py",
+    "url": "https://raw.githubusercontent.com/google/flax/01854da11286b4109c59d7fd9205f3822fe807d6/examples/imagenet/train.py",
+    "local_path": "validation/originals/flax_imagenet/train.py",
+    "bytes": 12612,
+    "sha256": "aa4a8b3cf87f4467a5a3d3b785532274acf33766008a478cfe931240065f2593"
+  },
+  {
+    "repository": "google/flax",
+    "revision": "01854da11286b4109c59d7fd9205f3822fe807d6",
+    "source_path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/google/flax/01854da11286b4109c59d7fd9205f3822fe807d6/LICENSE",
+    "local_path": "validation/originals/flax_imagenet/LICENSE",
+    "bytes": 11309,
+    "sha256": "25e8791da26f7e74c4baf19eafd7d137b64a46952ef840ed01c172b680cf4046"
+  },
+  {
+    "repository": "pytorch/examples",
+    "revision": "acc295dc7b90714f1bf47f06004fc19a7fe235c4",
+    "source_path": "word_language_model/model.py",
+    "url": "https://raw.githubusercontent.com/pytorch/examples/acc295dc7b90714f1bf47f06004fc19a7fe235c4/word_language_model/model.py",
+    "local_path": "validation/originals/torch_language_model/model.py",
+    "bytes": 5951,
+    "sha256": "e4451a33e9b16953004bc639d736d14f42a2b21f2939ccabe4cff10d3c40b74c"
+  },
+  {
+    "repository": "pytorch/examples",
+    "revision": "acc295dc7b90714f1bf47f06004fc19a7fe235c4",
+    "source_path": "word_language_model/main.py",
+    "url": "https://raw.githubusercontent.com/pytorch/examples/acc295dc7b90714f1bf47f06004fc19a7fe235c4/word_language_model/main.py",
+    "local_path": "validation/originals/torch_language_model/main.py",
+    "bytes": 11669,
+    "sha256": "391de12bb7c6e07dbb105d47d017632bf80c01d2e5b25adbf83da9cdcdd5a862"
+  },
+  {
+    "repository": "pytorch/examples",
+    "revision": "acc295dc7b90714f1bf47f06004fc19a7fe235c4",
+    "source_path": "word_language_model/generate.py",
+    "url": "https://raw.githubusercontent.com/pytorch/examples/acc295dc7b90714f1bf47f06004fc19a7fe235c4/word_language_model/generate.py",
+    "local_path": "validation/originals/torch_language_model/generate.py",
+    "bytes": 3886,
+    "sha256": "32ea1e204619ae0e15d2f67365bccbf39805099c5f16a7323c9baa964e951d49"
+  },
+  {
+    "repository": "pytorch/examples",
+    "revision": "acc295dc7b90714f1bf47f06004fc19a7fe235c4",
+    "source_path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/pytorch/examples/acc295dc7b90714f1bf47f06004fc19a7fe235c4/LICENSE",
+    "local_path": "validation/originals/torch_language_model/LICENSE",
+    "bytes": 1520,
+    "sha256": "7e5dc9b5cf276166c4a0678d33e53b14e3d7ef47eee9356ab786c4ba45414efd"
+  }
+]

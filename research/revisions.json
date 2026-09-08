@@ -1,0 +1,86 @@
+{
+  "dgrauet/claude-skill-mlx-porting": {
+    "revision": "44d92c094bd9ca2812e222a222254149a936c9dc",
+    "default_branch": "main",
+    "license": "MIT",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "modular/skills": {
+    "revision": "d55e84c7e2a6d954b5a38eee751a75237dee1b7d",
+    "default_branch": "main",
+    "license": "NOASSERTION",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "mflux-community/mflux": {
+    "revision": "051ba9ff25c9a8a8703356053a012a0dfad3fe39",
+    "default_branch": "main",
+    "license": "MIT",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "tensormux/kernel-skills": {
+    "revision": "7b7337a123f8711aa8e3d0452351d8fd30dde4b7",
+    "default_branch": "master",
+    "license": "MIT",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "Orchestra-Research/AI-Research-SKILLs": {
+    "revision": "773a52944ba4747a18bd4ae9ade53fff041adcbc",
+    "default_branch": "main",
+    "license": "MIT",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "K-Dense-AI/claude-scientific-skills": {
+    "revision": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+    "default_branch": "main",
+    "license": "MIT",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "obra/superpowers": {
+    "revision": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+    "default_branch": "main",
+    "license": "MIT",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "apple/coreai-models": {
+    "revision": "df8119879f125ad1e2e4c6249c2cddded75c190a",
+    "default_branch": "main",
+    "license": "BSD-3-Clause",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "pytorch/pytorch": {
+    "revision": "2b1d72fc614c57d5ebe70ebaf22da2abaf11a3d4",
+    "default_branch": "main",
+    "license": "NOASSERTION",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "pytorch/executorch": {
+    "revision": "978e5844f79dbccb3e3274644842f2f5a47a2eff",
+    "default_branch": "main",
+    "license": "NOASSERTION",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "vllm-project/vllm": {
+    "revision": "8ebc5b0a182b3351a1c62fe73e97be2c489ed2a6",
+    "default_branch": "main",
+    "license": "Apache-2.0",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "PrathamLearnsToCode/paper2code": {
+    "revision": "fcffce7a1250659ed74f2a96cdf54595c92306c4",
+    "default_branch": "main",
+    "license": "MIT",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "maurinl26/fortranspire": {
+    "revision": "2cb9128ed093eaf13c02057bfc1b700ea02fd9a8",
+    "default_branch": "main",
+    "license": "Apache-2.0",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  },
+  "mindrally/skills": {
+    "revision": "97184105b5daa3a6860a2aeb8e7e7fd1c42da40a",
+    "default_branch": "main",
+    "license": "Apache-2.0",
+    "accessed": "2026-09-08T15:49:12.035547+00:00"
+  }
+}

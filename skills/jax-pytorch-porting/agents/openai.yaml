@@ -1,0 +1,4 @@
+interface:
+  display_name: "JAX and PyTorch Porting"
+  short_description: "Bidirectional model ports with parity and fair benchmarks"
+  default_prompt: "Use $jax-pytorch-porting to port this model, preserve inference and training semantics, validate checkpoints and numerical parity, and measure performance fairly."
