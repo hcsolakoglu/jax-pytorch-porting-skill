@@ -37,3 +37,12 @@ Initial version `0.1.0`, commit `8dc8ece`, contains a complete staged workflow a
 - **Generalization:** applies to any harness with connection loss, context reset, interrupted writes or stale worker memory. Exact namespaces and backoff are host-dependent; no Local-MCP-specific dependency is imposed on the skill.
 - **Regression/contradiction check:** no oracle, budget or model implementation changed. Existing commits were pushed and HEAD/origin divergence verified as zero. Bounded retries preserve stopping rules rather than create endless polling.
 - **Result:** real work recovered and backed up; current access verified. Internal root cause of the prior tool failure remains unknown.
+
+## Iteration 5: adversarial attack on the numerical oracle
+
+- **Weakness:** the comparator could accept different finite complex components behind NaNs, accept overflowed error/budget comparisons, erase long-double differences through FP64 casting, and emit NaN cosine for large equal values.
+- **Evidence:** four newly added negative tests failed against the previous helper (4 failed, 7 passed). These are observed helper defects, not defects in either model port.
+- **Proposed/implemented change:** componentwise exceptional-value comparison, reject unsupported extended precision and arithmetic overflow, scale cosine/RMS computations, add p99 and worst-coordinate diagnostics. No parity tolerance changed.
+- **Generalization:** relevant to gradients, complex operators, large reductions, exact checkpoint fields and any numeric comparison, independently of architecture or port direction. Unsupported-range rejection is explicit rather than claiming universal numeric coverage.
+- **Regression/contradiction check:** 11 helper tests pass; serialized CPU revalidation passes 645 ResNet training and 435 recurrent comparison records with unchanged budgets. Exceptional slots require exact finite-component agreement, documented separately from ordinary tolerance comparisons.
+- **Result:** four false-confidence cases are mechanically guarded; both genuine ports remain valid within their recorded development scope.

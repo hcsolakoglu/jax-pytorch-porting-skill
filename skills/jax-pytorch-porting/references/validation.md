@@ -30,6 +30,8 @@ For finite real/complex values, an elementwise gate may use `abs(candidate-refer
 
 Integers, booleans, indices, counters, masks and exact metadata normally require exact equality. Do not cast uint64/int64 to float and erase differences. NaN/Inf rules are explicit: default fail on unexpected nonfinite values; for specified propagation, compare locations and infinity signs separately. `equal_nan=True` is not a universal parity policy. Empty outputs need an explicit contract rather than vacuous success.
 
+Validate comparator arithmetic too. Overflow in both error and tolerance can make `inf > inf` false and admit a mismatch. Complex NaNs require componentwise handling so a NaN real part cannot hide an incorrect finite imaginary part. Never silently downcast extended-precision or exact integer oracles. The bundled `scripts/parity.py` rejects unsupported precision and overflow, checks exceptional complex components strictly, stabilizes cosine/RMS diagnostics, and reports worst coordinates. It supports bounded NumPy float16/32/64 and complex64/128 tensors, not every framework dtype; for BF16, validate original dtypes first, then explicitly promote both sides for diagnostics without claiming FP32 execution.
+
 ## First-divergence localization
 
 1. Align inputs, parameters, mode, state, dtype and actual random samples. Verify dump adapters with a known identity/permutation probe.

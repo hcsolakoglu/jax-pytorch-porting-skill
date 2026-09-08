@@ -46,3 +46,30 @@ def test_zero_and_complex_metrics_are_well_defined():
     assert parity.compare(np.zeros(2), np.zeros(2), atol=0, rtol=0)['cosine'] == 1
     value = np.array([1+2j, 3-4j])
     assert parity.compare(value, value, atol=0, rtol=0)['mismatches'] == 0
+
+
+def test_complex_nan_does_not_hide_different_finite_component():
+    with pytest.raises(parity.ParityError):
+        parity.compare(np.array([complex(np.nan, 1)]), np.array([complex(np.nan, 2)]),
+                       atol=0, rtol=0, allow_nonfinite=True)
+
+
+def test_overflow_cannot_turn_mismatch_into_pass():
+    with pytest.raises(parity.ParityError):
+        parity.compare(np.array([1e308]), np.array([-1.7e308]), atol=0, rtol=2)
+
+
+def test_large_equal_values_have_finite_diagnostics():
+    import json
+    result = parity.compare(np.array([1e308, 1e308]), np.array([1e308, 1e308]), atol=0, rtol=0)
+    assert result['cosine'] == pytest.approx(1)
+    json.dumps(result, allow_nan=False)
+
+
+def test_extended_precision_is_not_silently_downcast():
+    if np.finfo(np.longdouble).nmant <= np.finfo(np.float64).nmant:
+        pytest.skip('This platform has no extended long-double precision')
+    values = np.array([1], dtype=np.longdouble)
+    different = np.nextafter(values, np.longdouble(2))
+    with pytest.raises((TypeError, parity.ParityError)):
+        parity.compare(values, different, atol=0, rtol=0)
