@@ -2,7 +2,7 @@
   "evidence_class": "OBSERVED",
   "status": "PASS",
   "budget_version": 1,
-  "elapsed_seconds": 22.535556236995035,
+  "elapsed_seconds": 20.585103949008044,
   "comparison_records": 645,
   "notes": [
     "Native PyTorch execution; no source-framework fallback.",
@@ -15289,5 +15289,38 @@
       "atol": 3e-06,
       "rtol": 3e-05
     }
-  ]
+  ],
+  "provenance": {
+    "validation_sha256": "271518c90e27c2385c2e59a89ced2974dd8af52d5f84bb0df104df9bc635fdb9",
+    "files": {
+      "research/validation-environment.lock": "73a8b89f060fc8696b5025e379387d80e4564b028efd3daf8169e18a8b8c44bd",
+      "skills/jax-pytorch-porting/scripts/parity.py": "c4ad567cd3b2b491df6714fcd0af6d46ababef06fb4e40a773331d8829d326db",
+      "validation/budgets.json": "471b7356856a9213f613e496f7871c074798b04ca72d0bab41d37fa17958fc74",
+      "validation/environment.py": "5bde82f54c3fe441d107c5055ec01a1ddceaa40f9a5fde5eac253a2d2210cd34",
+      "validation/evidence.py": "ff49bdf0e134a7e3712bcd872a37a51ac2851a51d24647716c8d75ae8a860db9",
+      "validation/originals/flax_imagenet/models.py": "cd354ca3990ae35c3529e680b7d6e91f273508aa3cc087f03fdf41699063fb50",
+      "validation/originals/flax_imagenet/train.py": "aa4a8b3cf87f4467a5a3d3b785532274acf33766008a478cfe931240065f2593",
+      "validation/originals/torch_language_model/generate.py": "32ea1e204619ae0e15d2f67365bccbf39805099c5f16a7323c9baa964e951d49",
+      "validation/originals/torch_language_model/main.py": "391de12bb7c6e07dbb105d47d017632bf80c01d2e5b25adbf83da9cdcdd5a862",
+      "validation/originals/torch_language_model/model.py": "e4451a33e9b16953004bc639d736d14f42a2b21f2939ccabe4cff10d3c40b74c",
+      "validation/ports/resnet_torch.py": "f1154c18ebc425991282876ba1fbd59986f8a0285b9f8c75f2e00c98ba4f56be",
+      "validation/ports/rnn_jax.py": "50b73d5b6d876b004437d9bbd53581a0c8785ff0ecfb6fadc35e22722d6323ba",
+      "validation/reporting.py": "e2226ff115a74c606c1ea62ef759c4ef7b8541cee3ac0f7cb5f311f84db10585",
+      "validation/semantic_probes.py": "20d3694e2f2dbcc3ca9f53b0fad6a02b478ba68c479d7678d37ce7fc30caeb77",
+      "validation/source_probe.py": "2de9e805d23a6c438255adc67e390ca6f11226f64d451e7108a11c3f5f2c898c",
+      "validation/validate_resnet.py": "e9c223d2570a06c839a018eb69f9278559e5ba5d415287e2a133bff148be5a9d",
+      "validation/validate_rnn.py": "27ba35fe89015d9aa32fb259e1957daf4c7edff6552a01e31f3812e8d6e654b8"
+    },
+    "base_git_commit": "f724cf8dd080026fece16602408928f3f38884a0",
+    "python": "3.12.14",
+    "architecture": "x86_64",
+    "versions": {
+      "torch": "2.14.0+cpu",
+      "jax": "0.11.1",
+      "jaxlib": "0.11.1",
+      "flax": "0.12.9",
+      "optax": "0.2.8",
+      "numpy": "2.5.2"
+    }
+  }
 }

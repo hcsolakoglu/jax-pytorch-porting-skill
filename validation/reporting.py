@@ -7,6 +7,7 @@ from pathlib import Path
 import time
 
 from validation.environment import ROOT
+from validation.evidence import fingerprint, provenance
 
 spec = importlib.util.spec_from_file_location('port_parity', ROOT / 'skills/jax-pytorch-porting/scripts/parity.py')
 if spec is None or spec.loader is None:
@@ -23,6 +24,7 @@ class Report:
         self.records = []
         self.notes = []
         self.status = 'RUNNING'
+        self.provenance = provenance()
 
     def check(self, name: str, reference, candidate, budget: str = 'checkpoint') -> dict:
         try:
@@ -36,12 +38,15 @@ class Report:
         return result
 
     def save(self, *, status: str | None = None) -> Path:
+        if fingerprint()['validation_sha256'] != self.provenance['validation_sha256']:
+            raise RuntimeError('Validation inputs changed during this run; evidence is invalid')
         if status is not None:
             self.status = status
         destination = ROOT / 'validation/results' / f'{self.name}.json'
         destination.parent.mkdir(exist_ok=True)
         payload = {'evidence_class': 'OBSERVED', 'status': self.status, 'budget_version': BUDGETS['version'],
                    'elapsed_seconds': time.monotonic()-self.started,
-                   'comparison_records': len(self.records), 'notes': self.notes, 'checks': self.records}
+                   'comparison_records': len(self.records), 'notes': self.notes, 'checks': self.records,
+                   'provenance': self.provenance}
         destination.write_text(json.dumps(payload, indent=2, allow_nan=False) + '\n')
         return destination

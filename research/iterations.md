@@ -64,3 +64,12 @@ Initial version `0.1.0`, commit `8dc8ece`, contains a complete staged workflow a
 - **Generalization:** attention/transformer, optimizer and derivative probes extend beyond convolution and recurrent validation models. All-masked behavior is version/backend-specific; the skill requires source-specific adapters, not a universal output replacement.
 - **Regression/contradiction check:** all probes pass their declared invariants and negative controls. An observed mismatch is recorded rather than hidden by loosening a tolerance. No target-model implementation or frozen budget changed.
 - **Result:** concrete cross-architecture gaps fixed with official behavior and bounded executable evidence; no accelerator inference is made.
+
+## Iteration 8: fingerprint evidence and falsify performance assumptions
+
+- **Weakness:** saved PASS reports had no automatic freshness binding. An initial benchmark allowed two affinity cores despite claiming one thread. Compilation and memory summaries could be overinterpreted, and a correct target could be mistaken for a faster target.
+- **Evidence:** `validation/evidence.py`, updated Report and benchmark gates; serialized CPU rerun: 12 unit tests, 46 ResNet forward, 645 ResNet training and 435 recurrent comparisons pass. All three bounded benchmarks include matched one-core capacity, five warmups, 30 alternating pairs, raw samples, first-call cost, input/code/dependency hashes and pre/post timing checks.
+- **Proposed/implemented change:** reject stale prerequisite fingerprints; fix CPU capacity; record combined-process RSS and one-session uncertainty limits; test one Inductor candidate after correctness rather than launching broad searches.
+- **Generalization:** validity applies to both port directions, arbitrary numerical evaluators, compiler modes and workload sizes. Resource settings and proof scope travel with measurements; no single-core policy is imposed on production users.
+- **Regression/contradiction check:** numerical budgets unchanged. LSTM JAX target records 2.660x paired-median speedup (descriptive bootstrap 2.346-3.044). ResNet Torch eager records 0.252x and Inductor 0.538x versus JAX jit; both FAIL the >=1x performance gate. These are tiny synthetic one-session CPU measurements, not tuned production baselines or accelerator claims. No cross-session precise eager-to-Inductor speedup is asserted.
+- **Result:** genuine negative performance evidence retained; the skill explicitly forbids claiming faster merely because parity passed. No accelerator resources or long training were used.

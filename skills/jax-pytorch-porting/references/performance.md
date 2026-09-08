@@ -48,3 +48,9 @@ Use profiles and a simple cost model to choose the next experiment. If a fractio
 | Mixed precision | Contract explicitly allows a quality tradeoff or source uses it. | Accuracy/error budget and training stability; do not silently relax parity. |
 
 Do not assume vectorization, custom kernels, pre-transposing weights, more workers or more compilation is faster. Revert unsuccessful performance changes. Stop at a maintainable solution that meets requirements; retain comprehensive test procedures for later production scale without running them all during small development validation.
+
+## Evidence freshness and bounded negative results
+
+Bind every correctness prerequisite and timing report to source/target/evaluator code hashes, frozen budgets, dependency versions, input hashes and actual hardware/configuration. A previous PASS with a different fingerprint is not a benchmark gate. If code changes during a run, invalidate that run. Match available CPU capacity as well as framework thread settings: one runtime constrained to one thread versus another allowed multiple cores is not a matched single-core comparison.
+
+Report a slower correct port as a performance failure when a no-regression gate applies. Do not delete the slow case, change precision, change batch size, time only an easier subgraph or prolong optimization indefinitely to create a success claim. Preserve valid implementations and document the measured bottleneck, tested candidates, cold/warm costs and a bounded next investigation. A development exercise may end with a useful failed performance gate; that does not authorize a production release requiring the gate. Combined-process peak RSS cannot be presented as per-model peak memory. A one-session paired bootstrap is descriptive, not independent deployment confidence.
