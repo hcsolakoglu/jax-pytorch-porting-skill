@@ -1,0 +1,1246 @@
+[
+  {
+    "source": "params/conv_init/kernel",
+    "target": "conv_init.weight",
+    "source_shape": [
+      7,
+      7,
+      3,
+      4
+    ],
+    "target_shape": [
+      4,
+      3,
+      7,
+      7
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/bn_init/scale",
+    "target": "bn_init.weight",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/bn_init/bias",
+    "target": "bn_init.bias",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_0/Conv_0/kernel",
+    "target": "ResNetBlock_0.Conv_0.weight",
+    "source_shape": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "target_shape": [
+      4,
+      4,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_0/BatchNorm_0/scale",
+    "target": "ResNetBlock_0.BatchNorm_0.weight",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_0/BatchNorm_0/bias",
+    "target": "ResNetBlock_0.BatchNorm_0.bias",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_0/Conv_1/kernel",
+    "target": "ResNetBlock_0.Conv_1.weight",
+    "source_shape": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "target_shape": [
+      4,
+      4,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_0/BatchNorm_1/scale",
+    "target": "ResNetBlock_0.BatchNorm_1.weight",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_0/BatchNorm_1/bias",
+    "target": "ResNetBlock_0.BatchNorm_1.bias",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_1/Conv_0/kernel",
+    "target": "ResNetBlock_1.Conv_0.weight",
+    "source_shape": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "target_shape": [
+      4,
+      4,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_1/BatchNorm_0/scale",
+    "target": "ResNetBlock_1.BatchNorm_0.weight",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_1/BatchNorm_0/bias",
+    "target": "ResNetBlock_1.BatchNorm_0.bias",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_1/Conv_1/kernel",
+    "target": "ResNetBlock_1.Conv_1.weight",
+    "source_shape": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "target_shape": [
+      4,
+      4,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_1/BatchNorm_1/scale",
+    "target": "ResNetBlock_1.BatchNorm_1.weight",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_1/BatchNorm_1/bias",
+    "target": "ResNetBlock_1.BatchNorm_1.bias",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_2/Conv_0/kernel",
+    "target": "ResNetBlock_2.Conv_0.weight",
+    "source_shape": [
+      3,
+      3,
+      4,
+      8
+    ],
+    "target_shape": [
+      8,
+      4,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_2/BatchNorm_0/scale",
+    "target": "ResNetBlock_2.BatchNorm_0.weight",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_2/BatchNorm_0/bias",
+    "target": "ResNetBlock_2.BatchNorm_0.bias",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_2/Conv_1/kernel",
+    "target": "ResNetBlock_2.Conv_1.weight",
+    "source_shape": [
+      3,
+      3,
+      8,
+      8
+    ],
+    "target_shape": [
+      8,
+      8,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_2/BatchNorm_1/scale",
+    "target": "ResNetBlock_2.BatchNorm_1.weight",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_2/BatchNorm_1/bias",
+    "target": "ResNetBlock_2.BatchNorm_1.bias",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_2/conv_proj/kernel",
+    "target": "ResNetBlock_2.conv_proj.weight",
+    "source_shape": [
+      1,
+      1,
+      4,
+      8
+    ],
+    "target_shape": [
+      8,
+      4,
+      1,
+      1
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_2/norm_proj/scale",
+    "target": "ResNetBlock_2.norm_proj.weight",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_2/norm_proj/bias",
+    "target": "ResNetBlock_2.norm_proj.bias",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_3/Conv_0/kernel",
+    "target": "ResNetBlock_3.Conv_0.weight",
+    "source_shape": [
+      3,
+      3,
+      8,
+      8
+    ],
+    "target_shape": [
+      8,
+      8,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_3/BatchNorm_0/scale",
+    "target": "ResNetBlock_3.BatchNorm_0.weight",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_3/BatchNorm_0/bias",
+    "target": "ResNetBlock_3.BatchNorm_0.bias",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_3/Conv_1/kernel",
+    "target": "ResNetBlock_3.Conv_1.weight",
+    "source_shape": [
+      3,
+      3,
+      8,
+      8
+    ],
+    "target_shape": [
+      8,
+      8,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_3/BatchNorm_1/scale",
+    "target": "ResNetBlock_3.BatchNorm_1.weight",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_3/BatchNorm_1/bias",
+    "target": "ResNetBlock_3.BatchNorm_1.bias",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_4/Conv_0/kernel",
+    "target": "ResNetBlock_4.Conv_0.weight",
+    "source_shape": [
+      3,
+      3,
+      8,
+      16
+    ],
+    "target_shape": [
+      16,
+      8,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_4/BatchNorm_0/scale",
+    "target": "ResNetBlock_4.BatchNorm_0.weight",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_4/BatchNorm_0/bias",
+    "target": "ResNetBlock_4.BatchNorm_0.bias",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_4/Conv_1/kernel",
+    "target": "ResNetBlock_4.Conv_1.weight",
+    "source_shape": [
+      3,
+      3,
+      16,
+      16
+    ],
+    "target_shape": [
+      16,
+      16,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_4/BatchNorm_1/scale",
+    "target": "ResNetBlock_4.BatchNorm_1.weight",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_4/BatchNorm_1/bias",
+    "target": "ResNetBlock_4.BatchNorm_1.bias",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_4/conv_proj/kernel",
+    "target": "ResNetBlock_4.conv_proj.weight",
+    "source_shape": [
+      1,
+      1,
+      8,
+      16
+    ],
+    "target_shape": [
+      16,
+      8,
+      1,
+      1
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_4/norm_proj/scale",
+    "target": "ResNetBlock_4.norm_proj.weight",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_4/norm_proj/bias",
+    "target": "ResNetBlock_4.norm_proj.bias",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_5/Conv_0/kernel",
+    "target": "ResNetBlock_5.Conv_0.weight",
+    "source_shape": [
+      3,
+      3,
+      16,
+      16
+    ],
+    "target_shape": [
+      16,
+      16,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_5/BatchNorm_0/scale",
+    "target": "ResNetBlock_5.BatchNorm_0.weight",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_5/BatchNorm_0/bias",
+    "target": "ResNetBlock_5.BatchNorm_0.bias",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_5/Conv_1/kernel",
+    "target": "ResNetBlock_5.Conv_1.weight",
+    "source_shape": [
+      3,
+      3,
+      16,
+      16
+    ],
+    "target_shape": [
+      16,
+      16,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_5/BatchNorm_1/scale",
+    "target": "ResNetBlock_5.BatchNorm_1.weight",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_5/BatchNorm_1/bias",
+    "target": "ResNetBlock_5.BatchNorm_1.bias",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_6/Conv_0/kernel",
+    "target": "ResNetBlock_6.Conv_0.weight",
+    "source_shape": [
+      3,
+      3,
+      16,
+      32
+    ],
+    "target_shape": [
+      32,
+      16,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_6/BatchNorm_0/scale",
+    "target": "ResNetBlock_6.BatchNorm_0.weight",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_6/BatchNorm_0/bias",
+    "target": "ResNetBlock_6.BatchNorm_0.bias",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_6/Conv_1/kernel",
+    "target": "ResNetBlock_6.Conv_1.weight",
+    "source_shape": [
+      3,
+      3,
+      32,
+      32
+    ],
+    "target_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_6/BatchNorm_1/scale",
+    "target": "ResNetBlock_6.BatchNorm_1.weight",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_6/BatchNorm_1/bias",
+    "target": "ResNetBlock_6.BatchNorm_1.bias",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_6/conv_proj/kernel",
+    "target": "ResNetBlock_6.conv_proj.weight",
+    "source_shape": [
+      1,
+      1,
+      16,
+      32
+    ],
+    "target_shape": [
+      32,
+      16,
+      1,
+      1
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_6/norm_proj/scale",
+    "target": "ResNetBlock_6.norm_proj.weight",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_6/norm_proj/bias",
+    "target": "ResNetBlock_6.norm_proj.bias",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_7/Conv_0/kernel",
+    "target": "ResNetBlock_7.Conv_0.weight",
+    "source_shape": [
+      3,
+      3,
+      32,
+      32
+    ],
+    "target_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_7/BatchNorm_0/scale",
+    "target": "ResNetBlock_7.BatchNorm_0.weight",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_7/BatchNorm_0/bias",
+    "target": "ResNetBlock_7.BatchNorm_0.bias",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_7/Conv_1/kernel",
+    "target": "ResNetBlock_7.Conv_1.weight",
+    "source_shape": [
+      3,
+      3,
+      32,
+      32
+    ],
+    "target_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "transform": "HWIO-to-OIHW"
+  },
+  {
+    "source": "params/ResNetBlock_7/BatchNorm_1/scale",
+    "target": "ResNetBlock_7.BatchNorm_1.weight",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/ResNetBlock_7/BatchNorm_1/bias",
+    "target": "ResNetBlock_7.BatchNorm_1.bias",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "params/Dense_0/kernel",
+    "target": "Dense_0.weight",
+    "source_shape": [
+      32,
+      1000
+    ],
+    "target_shape": [
+      1000,
+      32
+    ],
+    "transform": "IO-to-OI"
+  },
+  {
+    "source": "params/Dense_0/bias",
+    "target": "Dense_0.bias",
+    "source_shape": [
+      1000
+    ],
+    "target_shape": [
+      1000
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/bn_init/mean",
+    "target": "bn_init.running_mean",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/bn_init/var",
+    "target": "bn_init.running_var",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_0/BatchNorm_0/mean",
+    "target": "ResNetBlock_0.BatchNorm_0.running_mean",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_0/BatchNorm_0/var",
+    "target": "ResNetBlock_0.BatchNorm_0.running_var",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_0/BatchNorm_1/mean",
+    "target": "ResNetBlock_0.BatchNorm_1.running_mean",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_0/BatchNorm_1/var",
+    "target": "ResNetBlock_0.BatchNorm_1.running_var",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_1/BatchNorm_0/mean",
+    "target": "ResNetBlock_1.BatchNorm_0.running_mean",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_1/BatchNorm_0/var",
+    "target": "ResNetBlock_1.BatchNorm_0.running_var",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_1/BatchNorm_1/mean",
+    "target": "ResNetBlock_1.BatchNorm_1.running_mean",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_1/BatchNorm_1/var",
+    "target": "ResNetBlock_1.BatchNorm_1.running_var",
+    "source_shape": [
+      4
+    ],
+    "target_shape": [
+      4
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_2/BatchNorm_0/mean",
+    "target": "ResNetBlock_2.BatchNorm_0.running_mean",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_2/BatchNorm_0/var",
+    "target": "ResNetBlock_2.BatchNorm_0.running_var",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_2/BatchNorm_1/mean",
+    "target": "ResNetBlock_2.BatchNorm_1.running_mean",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_2/BatchNorm_1/var",
+    "target": "ResNetBlock_2.BatchNorm_1.running_var",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_2/norm_proj/mean",
+    "target": "ResNetBlock_2.norm_proj.running_mean",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_2/norm_proj/var",
+    "target": "ResNetBlock_2.norm_proj.running_var",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_3/BatchNorm_0/mean",
+    "target": "ResNetBlock_3.BatchNorm_0.running_mean",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_3/BatchNorm_0/var",
+    "target": "ResNetBlock_3.BatchNorm_0.running_var",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_3/BatchNorm_1/mean",
+    "target": "ResNetBlock_3.BatchNorm_1.running_mean",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_3/BatchNorm_1/var",
+    "target": "ResNetBlock_3.BatchNorm_1.running_var",
+    "source_shape": [
+      8
+    ],
+    "target_shape": [
+      8
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_4/BatchNorm_0/mean",
+    "target": "ResNetBlock_4.BatchNorm_0.running_mean",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_4/BatchNorm_0/var",
+    "target": "ResNetBlock_4.BatchNorm_0.running_var",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_4/BatchNorm_1/mean",
+    "target": "ResNetBlock_4.BatchNorm_1.running_mean",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_4/BatchNorm_1/var",
+    "target": "ResNetBlock_4.BatchNorm_1.running_var",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_4/norm_proj/mean",
+    "target": "ResNetBlock_4.norm_proj.running_mean",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_4/norm_proj/var",
+    "target": "ResNetBlock_4.norm_proj.running_var",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_5/BatchNorm_0/mean",
+    "target": "ResNetBlock_5.BatchNorm_0.running_mean",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_5/BatchNorm_0/var",
+    "target": "ResNetBlock_5.BatchNorm_0.running_var",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_5/BatchNorm_1/mean",
+    "target": "ResNetBlock_5.BatchNorm_1.running_mean",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_5/BatchNorm_1/var",
+    "target": "ResNetBlock_5.BatchNorm_1.running_var",
+    "source_shape": [
+      16
+    ],
+    "target_shape": [
+      16
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_6/BatchNorm_0/mean",
+    "target": "ResNetBlock_6.BatchNorm_0.running_mean",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_6/BatchNorm_0/var",
+    "target": "ResNetBlock_6.BatchNorm_0.running_var",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_6/BatchNorm_1/mean",
+    "target": "ResNetBlock_6.BatchNorm_1.running_mean",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_6/BatchNorm_1/var",
+    "target": "ResNetBlock_6.BatchNorm_1.running_var",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_6/norm_proj/mean",
+    "target": "ResNetBlock_6.norm_proj.running_mean",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_6/norm_proj/var",
+    "target": "ResNetBlock_6.norm_proj.running_var",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_7/BatchNorm_0/mean",
+    "target": "ResNetBlock_7.BatchNorm_0.running_mean",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_7/BatchNorm_0/var",
+    "target": "ResNetBlock_7.BatchNorm_0.running_var",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_7/BatchNorm_1/mean",
+    "target": "ResNetBlock_7.BatchNorm_1.running_mean",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  },
+  {
+    "source": "batch_stats/ResNetBlock_7/BatchNorm_1/var",
+    "target": "ResNetBlock_7.BatchNorm_1.running_var",
+    "source_shape": [
+      32
+    ],
+    "target_shape": [
+      32
+    ],
+    "transform": "identity"
+  }
+]

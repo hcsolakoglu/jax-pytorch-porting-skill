@@ -52,4 +52,6 @@ Load untrusted data only with safe formats or documented restricted deserializat
 
 Round-trip test: initialize a fresh model with deliberately different values, load converted state, verify exhaustive mapping and aliases, compare forward, then compare the next training step including slots and counters. A save/load test into identical initial values can pass even when nothing was loaded. Check missing/corrupt shards, extra/missing keys and incompatible metadata with small negative tests. A model-only reload must not be described as full training-resume parity.
 
+Test checkpoint conversion separately from a target-native round trip. A target round trip can preserve an already wrong parameter mapping. First map source parameters, buffers and optimizer slots by semantic names; then reload the target checkpoint; then compare its next update against a restored source transition. State which actual formats were read: an in-memory Flax serialization test does not establish compatibility with every Orbax checkpoint layout.
+
 Distributed optimizer checkpoints may encode global tensors, local shards, flattened slots or rank-specific RNG. Restore into a declared topology and verify global correspondence before claiming reshardability. Do not gather a multi-terabyte state onto one host as a default conversion strategy.

@@ -10,3 +10,12 @@ Initial version `0.1.0`, commit `8dc8ece`, contains a complete staged workflow a
 - **Generalization:** applies to zero-initialized residual/adapter branches, saturated activations, empty masks, zero recurrent states, EMA statistics and any stateful layer; it is not a rule to mutate production checkpoints.
 - **Regression/contradiction check:** original source hashes remain unchanged. Diagnostic active-branch fixtures are separate from original-initialization tests. The calibration is CPU-only and does not set production tolerances.
 - **Result:** source repeatability and the BN state discrepancy are observed; target correctness is not yet tested. Next step is implementing explicit source-equivalent behavior.
+
+## Iteration 2: genuine ResNet stateful port and conversion coverage
+
+- **Weakness:** initial procedures did not distinguish an axis-bound single-device training probe from actual distributed validation, or a target-native checkpoint round trip from source-state conversion.
+- **Evidence:** `validation/results/resnet-forward.json` (46 comparison records) and `resnet-training.json` (645 records). Executed original Flax ResNet18 and unchanged AST-selected original `train_step` on one CPU replica. Tested basic blocks, projection paths, asymmetric SAME padding, active residuals, intermediate tensors, Nesterov momentum, L2 gradients, moving statistics, two updates and one resumed update.
+- **Proposed/implemented change:** explicit source-axis binding guidance; source-to-target parameter/buffer/optimizer mapping; separate converted-state, native-load and resumed-transition checks. Added a native PyTorch model, auditable mapping and a bounded reproducible validator. Added strict NumPy comparison helper and seven negative/edge unit tests.
+- **Generalization:** collective-axis binding applies to BatchNorm and reductions in transformed source code. Mapping-plus-resume applies across optimizers and serialization formats, not only SGD/Flax/Torch.
+- **Regression/contradiction check:** frozen budgets and original source hashes unchanged; no target-port references; no GPU, TPU, multi-device, ImageNet accuracy or Orbax-file certification claimed. Cheap comparator gates ran before model validation.
+- **Result:** required bounded JAX-to-PyTorch model/training port passes its declared numerical scope. Performance remains unmeasured at this iteration.

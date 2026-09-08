@@ -39,6 +39,8 @@ Specify reduction axes, affine axes, epsilon location/value, accumulation dtype,
 
 Torch BatchNorm uses batch population variance for current normalization but an unbiased estimate for its moving variance. Its momentum weights the new statistic. Flax Linen's momentum weights the previous statistic and its implementation updates with its computed batch variance. A complement of momentum alone therefore does not ensure training-state parity. Use a source-equivalent state update or a documented compatibility adapter. Check initialization and one-element reduction behavior separately. Do not silently replace BatchNorm with GroupNorm to avoid state/vmap problems.
 
+When a source normalization names a collective axis, a single-device training probe still needs a valid binding for that axis. Bind it deliberately with the source transformation rather than deleting collectives or changing normalization. One CPU replica can validate local transition algebra, but cannot validate cross-device statistics or collective correctness. Keep that coverage distinction in the report.
+
 LayerNorm/RMSNorm/GroupNorm/InstanceNorm differ in axes, centering, scale offsets and epsilon defaults. Match exact formulas; `rsqrt(var+eps)` and `1/(sqrt(var)+eps)` are different. Near-constant inputs with a large mean distinguish cancellation-sensitive variance from centered variance. Keep source-equivalence and mathematical-stability findings separate.
 
 ## RNG, initialization and stochastic layers
