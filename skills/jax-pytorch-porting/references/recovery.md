@@ -21,6 +21,14 @@ Stop a branch when it violates an invariant, reaches its resource budget, repeat
 
 When blocked, save: exact command/environment, minimal failing fixture, failure classification, tested hypotheses and outcomes, known-good commit, unresolved question, and cheapest next action. Continue other independent required work if useful. Never convert untested into passed or weaken scope silently to finish.
 
+## Recover tool or conversation state without erasing real work
+
+A discovery error is evidence about one call, not proof that a service is unavailable or prior work never happened. Reconcile repository HEAD, dirty files, remote revision, saved results and owned job status before starting over or reporting a blocker. Preserve previously verified facts with their revision and proof scope. Say "current access is unverified" rather than "no work was performed" when only present connectivity failed.
+
+Use exact tool namespaces supplied by the host. Re-discover a missing schema once, retry a read-only probe with bounded backoff, and use an already authorized alternate route when available. For writes with an unknown outcome, inspect actual state before retrying: a lost response may hide a successful commit, upload, job launch or repository creation. Never duplicate work blindly. Keep retry limits finite; a persistent access failure blocks only tasks requiring that capability, not independent documentation or review.
+
+After each substantive validated stage, commit intentional changes and push when authorized. Record commit, validation command/result and next action in one durable status note. After context recovery, read this note and verify it against disk; do not treat either conversational recollection or an old note as authoritative present state.
+
 ## Prevent benchmark and oracle contamination
 
 - Pin source revision, original files and golden fixture hashes. Keep evaluator/golden changes separate from target changes and require independent justification.

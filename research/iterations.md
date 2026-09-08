@@ -28,3 +28,12 @@ Initial version `0.1.0`, commit `8dc8ece`, contains a complete staged workflow a
 - **Generalization:** parameter identity matters to all tied/shared networks; explicit stochastic evidence levels apply to dropout, augmentation, diffusion noise and distributed RNG. Raw-key metadata applies beyond either validation model.
 - **Regression/contradiction check:** original files and frozen numerical budgets unchanged. Injected dropout is labeled a diagnostic seam, not native multi-layer RNG parity. Native fused inter-layer dropout distributions, corpus perplexity, long convergence and accelerators remain untested. No numerical failure occurred in the initial port run; that is not proof of exhaustive correctness.
 - **Result:** bounded PyTorch-to-JAX inference and training port passes. Added RNG-resume regression is required before this iteration is committed.
+
+## Iteration 4: interruption recovery and evidence-preserving checkpoints
+
+- **Weakness:** a prior final response falsely reported no verified PC work after a tool-discovery failure, despite durable commits and passing validation reports. Local history was ahead of the remote.
+- **Evidence:** recovery inspected private `hcsolakoglu/jax-pytorch-porting-skill`, HEAD `238ae95`, five existing commits, PASS reports with 46 ResNet forward, 645 ResNet training and 435 recurrent comparison records. The Local MCP read probe and GitHub identity/visibility query succeeded. No active tracked jobs remained. This establishes an erroneous summary, not the internal cause of the earlier discovery failure.
+- **Proposed/implemented change:** add idempotent recovery rules for missing tools and ambiguous write responses; retain prior proof scope; reconcile HEAD, files, jobs and remote before restart; maintain a compact status note and push substantive stages.
+- **Generalization:** applies to any harness with connection loss, context reset, interrupted writes or stale worker memory. Exact namespaces and backoff are host-dependent; no Local-MCP-specific dependency is imposed on the skill.
+- **Regression/contradiction check:** no oracle, budget or model implementation changed. Existing commits were pushed and HEAD/origin divergence verified as zero. Bounded retries preserve stopping rules rather than create endless polling.
+- **Result:** real work recovered and backed up; current access verified. Internal root cause of the prior tool failure remains unknown.
