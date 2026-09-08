@@ -1,0 +1,190 @@
+{
+  "rubric": "rubric.md",
+  "review_date": "2026-09-08",
+  "scope": "Manual documented-fitness assessment, not controlled agent performance. Twenty criteria in frozen C01-C20 order. Source entrypoints were read in full; supporting material earns credit only where explicitly inspected. Uninspected linked material and parent-repository capabilities earn no inferred credit.",
+  "selection": "208 retrieved skill entrypoints were screened by metadata; 31 related entries and a directly relevant Equinox gist were shortlisted. These 25 cover direct porting plus complementary numerical, compiler, training, accelerator and recovery skills. Near-duplicate generic JAX/testing entries and peripheral export-only/paper-writing workflows were excluded. This is a purposive inspected set, not an exhaustive global top-25 claim.",
+  "uncertainty": "Ordinal judgments can reasonably differ by one point per criterion. No independent blinded assessor or matched agent trials were run; do not interpret small total differences as empirical superiority.",
+  "entries": [
+    {
+      "repository": "nboyd/pytorch-to-equinox", "path": "SKILL.md",
+      "scores": [3,3,2,4,2,3,2,1,2,2,4,3,3,2,3,2,2,3,4,3],
+      "strength": "Direct PyTorch-to-JAX/Equinox workflow with captured real module inputs, bottom-up conversion, checkpoint serialization and scan guidance. Stronger direct task fit than generic framework tips.",
+      "weakness": "One direction only; optimizer transition validation is thin. Several blanket rules are unsafe: GELU defaults differ, scalar cond inside scan does not inherently execute both branches, Equinox supports explicit state, and dictionaries are valid pytrees. Fixed tolerances and oversized entrypoint reduce reliability.",
+      "evidence": "Full gist entrypoint; bottom-up parity, serialization, scan, operation mappings and common-issue sections. Technical counterchecks are in semantic-probes.json and synthesis.md."
+    },
+    {
+      "repository": "dgrauet/claude-skill-mlx-porting", "path": "mlx-porting/SKILL.md",
+      "scores": [0,4,0,4,0,3,0,0,2,3,4,3,3,3,3,2,3,4,4,3],
+      "strength": "Detailed model/config, QKV, dtype, wrapper and RNG traps; layer localization, conversion helpers and progressive references make inference ports actionable.",
+      "weakness": "MLX inference scope excludes JAX and training. Fixed absolute-error rules, mandatory structural copying and project-specific arsenal dependencies are not universal. Reported prior production experience was not independently rerun.",
+      "evidence": "Full entrypoint, especially reference-reading, parity, end-to-end and framework-constraint sections; supporting pitfalls and parity material inspected for relevant warnings."
+    },
+    {
+      "repository": "modular/skills", "path": "debug-model/SKILL.md",
+      "scores": [0,3,0,4,0,3,0,0,1,3,4,4,3,3,3,2,4,4,4,4],
+      "strength": "Validates dumpers, localizes first divergence, compares per-token dimensions and separates teacher-forced, incremental and serving failures. Tests hypotheses against captured tensors before recompiling.",
+      "weakness": "MAX/GPU-specific inference workflow; no JAX training or optimizer checks. Broad cosine thresholds can hide amplitude and discrete-decision errors without stronger budget rules.",
+      "evidence": "Full protocol steps 0-6 and linked comparator/stacked-failure guidance."
+    },
+    {
+      "repository": "modular/skills", "path": "import-model/SKILL.md",
+      "scores": [0,4,0,4,0,3,0,0,1,3,4,4,4,3,4,2,4,4,4,4],
+      "strength": "Strong configuration and state inventory, structural delta tracking, scaffold-versus-implementation guards and cheap local preflight before costly serving. Clear artifact and docstring honesty checks.",
+      "weakness": "MAX inference rather than bidirectional framework training. Trust-remote-code example and fixed environment assumptions need review; whole-graph serving flow is not a substitute for gradient or optimizer parity.",
+      "evidence": "Full decide/implement/verify phases; selected state audit, preflight and validation-tier references."
+    },
+    {
+      "repository": "modular/skills", "path": "profile-model/SKILL.md",
+      "scores": [0,3,0,3,0,1,0,0,4,4,4,3,4,2,2,2,4,4,4,4],
+      "strength": "Cheapest-first utilization, kernel breakdown and scoped deep profiling; good warmup, artifact checks, topology context and cleanup of owned processes only.",
+      "weakness": "No native conversion or training-parity workflow. Low utilization is a clue, not conclusive proof of a host bottleneck. MAX/nightly tooling and confirmation rules reduce portability.",
+      "evidence": "Full decision ladder, kernel-mix interpretation and durable-algorithm sections."
+    },
+    {
+      "repository": "modular/skills", "path": "benchmark-model/SKILL.md",
+      "scores": [0,2,0,3,0,1,0,0,4,3,2,3,3,1,2,2,4,4,4,3],
+      "strength": "Explicit workload/concurrency choice, readiness checks, tokenizer/model identity, saved result metadata and latency/throughput interpretation.",
+      "weakness": "Served MAX workload specialist, not a cross-framework equivalence protocol. No gradient/state checks and limited uncertainty/anti-contamination methodology.",
+      "evidence": "Full workload selection, run/save, metric and troubleshooting sections."
+    },
+    {
+      "repository": "mflux-community/mflux", "path": ".cursor/skills/mflux-model-porting/SKILL.md",
+      "scores": [0,4,0,4,2,2,0,1,2,2,4,3,3,3,4,2,3,4,4,3],
+      "strength": "Correctness-first MLX integration, injected RNG inputs, checkpoint/LoRA mappings and specific regression-prone CLI/config seams. Meaningful milestone commits and real integration lessons.",
+      "weakness": "Repository-specific conventions and visual judgment can replace stronger numerical evidence. No JAX or detailed training transition parity; mandatory architecture conventions do not generalize.",
+      "evidence": "Full workflow, integration-surface tables, testing and training-adapter sections."
+    },
+    {
+      "repository": "mflux-community/mflux", "path": ".cursor/skills/mflux-debugging/SKILL.md",
+      "scores": [0,3,0,4,0,3,0,0,1,2,4,3,3,2,3,2,3,3,4,3],
+      "strength": "Export-then-compare fixtures, exact noise injection, coarse-to-fine intermediate localization and protected golden outputs.",
+      "weakness": "MPS-only comparison instruction conflicts with CPU-first portable development. Visual quality and fixed starting tolerances cannot alone establish semantic parity. No gradients or optimizer state.",
+      "evidence": "Full export workflow, divergence causes, latent injection and artifact rules."
+    },
+    {
+      "repository": "mflux-community/mflux", "path": ".cursor/skills/mflux-model-tiny-test/SKILL.md",
+      "scores": [0,2,0,3,0,3,0,0,0,1,3,3,4,3,4,2,4,4,4,4],
+      "strength": "Hermetic real checkpoint seams, different initialization seeds, forced shard boundaries and explicit dimension constraints. Identifies a helper defect instead of weakening assertions.",
+      "weakness": "Checkpoint specialist only. VAE stand-ins do not validate actual VAE math; no forward/training performance or bidirectional porting coverage.",
+      "evidence": "Full tiny-test construction, seed/shard constraints and troubleshooting sections; cited helper behavior is documented, not rerun here."
+    },
+    {
+      "repository": "tensormux/kernel-skills", "path": "skills/patterns/write-kernel-test-plan/SKILL.md",
+      "scores": [0,3,0,3,1,3,1,0,3,3,3,2,3,4,4,1,3,4,3,2],
+      "strength": "Strong boundary, layout, precision, sanitizer and adversarial coverage with independent references and explicit failure detection.",
+      "weakness": "Fixed tolerance tables and a generic 10% slowdown allowance are not task-calibrated. Limited training semantics; missing standard YAML metadata lowers installation usability.",
+      "evidence": "Full numbered test-design workflow, correctness/performance requirements and review checklist."
+    },
+    {
+      "repository": "tensormux/kernel-skills", "path": "skills/patterns/write-numerically-stable-kernel/SKILL.md",
+      "scores": [0,2,0,2,1,2,1,0,2,3,3,2,2,4,2,1,3,2,2,1],
+      "strength": "Risk-based discussion of cancellation, accumulation and stable softmax/variance; adversarial value distributions and higher-precision references.",
+      "weakness": "Contains incorrect FP32 subnormal and low-precision digit claims; unconditional logit clipping and variance replacement can change source semantics. Several uncalibrated numeric rules; no standard frontmatter.",
+      "evidence": "Full risk taxonomy and common-failure sections; numerical claims cross-checked against framework type information and official precision documentation."
+    },
+    {
+      "repository": "tensormux/kernel-skills", "path": "skills/portability/write-backend-agnostic-kernel-plan/SKILL.md",
+      "scores": [1,2,0,2,1,2,0,0,3,4,2,2,3,3,3,1,3,3,3,2],
+      "strength": "Capability matrix, warp-size risks, backend boundaries, CPU fallback and real secondary-backend CI requirements.",
+      "weakness": "Hardware-kernel portability is not JAX/PyTorch model parity. Fixed percentage expectations and broad backend support statements require current verification; no optimizer or transformation validation.",
+      "evidence": "Full backend decision, risk register, CPU fallback and CI sections."
+    },
+    {
+      "repository": "tensormux/kernel-skills", "path": "skills/cuda/debug-cuda-kernel-correctness/SKILL.md",
+      "scores": [0,3,0,2,0,3,0,0,1,4,4,3,4,4,4,1,3,4,4,3],
+      "strength": "Minimal repro, error-pattern localization, index/stride derivation, reduction and barrier auditing, sanitizer escalation and regression cases.",
+      "weakness": "CUDA-only and no model-state/gradient parity. Symptom-to-cause heuristics sometimes sound stronger than evidence; changing fast math and occupancy together confounds diagnosis.",
+      "evidence": "Full ten-step diagnosis, kernel rules and post-fix validation checklist."
+    },
+    {
+      "repository": "tensormux/kernel-skills", "path": "skills/portability/port-cuda-kernel-to-triton/SKILL.md",
+      "scores": [0,3,0,3,0,3,0,0,3,3,3,2,3,3,3,1,3,4,3,2],
+      "strength": "Explicit tile/index/stride mapping, masked loads and stores, accumulation choices and post-correctness tuning.",
+      "weakness": "Different conversion direction and abstraction level. Generic 80-100% performance expectation, small fixed test matrix and broad synchronization simplifications need qualification.",
+      "evidence": "Full mapping workflow, correctness/performance sections and boundary checklist."
+    },
+    {
+      "repository": "Orchestra-Research/AI-Research-SKILLs", "path": "18-multimodal/openpi/SKILL.md",
+      "scores": [4,4,2,4,4,1,1,2,1,4,2,2,2,1,2,2,4,4,3,3],
+      "strength": "Actual JAX and PyTorch model/training/serving workflows, checkpoint conversion and domain-specific normalization/resource details.",
+      "weakness": "OpenPI-specific rather than general bidirectional parity. Conversion commands do not prove gradients or optimizer equivalence. Large resource defaults, overwrite flags and environment-specific paths require care.",
+      "evidence": "Full JAX/PyTorch conversion, training, inference and troubleshooting sections; general capability credit is limited to described workflows."
+    },
+    {
+      "repository": "Orchestra-Research/AI-Research-SKILLs", "path": "10-optimization/ml-training-recipes/SKILL.md",
+      "scores": [0,4,0,2,4,2,2,3,3,4,3,3,3,2,3,2,4,4,3,2],
+      "strength": "Broad training loops, optimizer/clipping/accumulation, mixed precision, profiles and experiment keep/discard discipline.",
+      "weakness": "Recipe improvements can silently alter a port: default decay masks, loss cutoffs, normalization or batch changes are not semantic equivalence. No JAX mapping and limited calibrated cross-framework checks.",
+      "evidence": "Full training, optimization, debugging and experimentation sections."
+    },
+    {
+      "repository": "Orchestra-Research/AI-Research-SKILLs", "path": "08-distributed-training/pytorch-fsdp2/SKILL.md",
+      "scores": [0,4,0,3,4,2,2,3,2,4,3,3,3,2,3,2,4,4,3,4],
+      "strength": "Concrete DTensor/FSDP2 state, optimizer-after-sharding, module-hook, mixed-precision and checkpoint guidance with versioned primary references.",
+      "weakness": "PyTorch distributed specialist, not JAX conversion or cross-framework gradient/optimizer equivalence. Requires actual topology validation beyond local instructions.",
+      "evidence": "Full sharding order, optimizer, checkpoint, pitfalls and official-reference sections."
+    },
+    {
+      "repository": "Orchestra-Research/AI-Research-SKILLs", "path": "10-optimization/flash-attention/SKILL.md",
+      "scores": [0,4,0,4,3,2,1,1,2,4,2,2,3,2,2,2,4,3,3,2],
+      "strength": "Useful attention layout, backend availability and memory/performance orientation with concrete framework calls.",
+      "weakness": "Fixed thresholds and speed claims, input generation in an example timing boundary, print-only comparison and precision-changing remedies weaken port validation. No JAX or optimizer state audit.",
+      "evidence": "Full API, benchmark, verification and troubleshooting examples; claims are not accepted as measured results in this review."
+    },
+    {
+      "repository": "K-Dense-AI/claude-scientific-skills", "path": "skills/pytorch-lightning/SKILL.md",
+      "scores": [0,4,0,3,4,1,1,2,2,4,2,2,3,2,3,2,4,4,4,3],
+      "strength": "Practical module/data/trainer templates, fast development runs, checkpointing and multi-device training setup.",
+      "weakness": "No cross-framework mapping or numerical transition parity. High-level training automation can conceal defaults; hardware selection must use actual memory and topology rather than model-size heuristics alone.",
+      "evidence": "Full module/trainer, fast-dev, checkpoint and distributed guidance."
+    },
+    {
+      "repository": "mindrally/skills", "path": "jax-best-practices/SKILL.md",
+      "scores": [2,0,0,1,1,0,1,0,1,1,0,0,0,0,0,2,4,2,2,0],
+      "strength": "Very small context footprint; reminds agents about pure functions, keys, transformations and pytrees.",
+      "weakness": "Mostly generic reminders, without runnable validation, state/checkpoint mapping, stopping rules, optimizer parity or supporting evidence. Not an executable porting workflow.",
+      "evidence": "Entire 53-line entrypoint; unmentioned criteria receive zero rather than inferred parent-repository credit."
+    },
+    {
+      "repository": "pytorch/pytorch", "path": ".claude/skills/pt2-bug-basher/SKILL.md",
+      "scores": [0,4,0,3,3,4,3,1,3,4,4,4,4,4,4,2,4,4,4,4],
+      "strength": "Excellent compiler-layer separation, failing tests, minimal repro, eager/compiled accuracy diagnosis, generated code and neighboring regression checks.",
+      "weakness": "PyTorch-internal environment and harness assumptions; no JAX/checkpoint conversion. Private compiler APIs and flags are version-sensitive; mandatory conda/worktree mechanics are not universally available.",
+      "evidence": "Full workflow, compile-mode distinction, error-triage table and minifier examples."
+    },
+    {
+      "repository": "pytorch/pytorch", "path": ".claude/skills/aoti-debug/SKILL.md",
+      "scores": [0,4,0,3,0,2,0,0,2,4,4,3,4,2,3,2,4,4,4,4],
+      "strength": "Cheap shape/device checks, runtime guard distinctions, intermediate-value diagnosis and explicit deprecated-versus-current AOTI APIs.",
+      "weakness": "Narrow compiled-inference scope, no training transition or JAX semantics. Several diagnostic flags materially change execution and must not leak into performance measurement.",
+      "evidence": "Full initial checks, CUDA diagnosis, API notes and compile-time/runtime flag table."
+    },
+    {
+      "repository": "vllm-project/vllm", "path": ".agents/skills/kernel-microbenchmark/SKILL.md",
+      "scores": [0,4,0,4,1,3,1,0,5,4,3,3,4,4,4,3,4,4,4,4],
+      "strength": "Strong synchronized timing, cache/work boundaries, roofline sanity, per-rank maxima, distributed lifetime/barrier discipline and reusable benchmark examples.",
+      "weakness": "Kernel/CUDA focus rather than native model conversion and training parity. CUPTI/cache defaults require workload justification; rough hardware references are not acceptance targets.",
+      "evidence": "Full workflow and multi-GPU sections; directly linked single-device and multi-GPU benchmark examples support performance score five. Examples were inspected, not executed on GPUs here."
+    },
+    {
+      "repository": "apple/coreai-models", "path": "skills/skills/model-authoring/SKILL.md",
+      "scores": [0,4,0,4,0,3,1,0,4,4,4,2,3,3,3,2,4,4,4,4],
+      "strength": "Concrete on-device operator/layout constraints, bottom-up captured-input testing, cache handling and compiled-model verification.",
+      "weakness": "Apple deployment specialist without JAX training. Fixed PSNR thresholds and strong source-reading/execution prescriptions do not generalize across architectures and numerical budgets.",
+      "evidence": "Full empirical rules, CPU correctness, cache, configuration and full-model verification guidance."
+    },
+    {
+      "repository": "obra/superpowers", "path": "skills/systematic-debugging/SKILL.md",
+      "scores": [0,1,0,1,0,0,0,0,1,1,4,4,4,3,4,3,3,4,4,2],
+      "strength": "Root-cause-first minimal reproduction, boundary evidence, one hypothesis per change, regression test and three-fix escalation discipline.",
+      "weakness": "No numerical/model-porting specifics; universal human stops and broad environment dumps need privacy and autonomy adaptation. Anecdotal success percentages are not controlled evidence.",
+      "evidence": "Full investigation, pattern analysis, hypothesis, implementation and escalation phases."
+    }
+  ],
+  "ours": {
+    "name": "jax-pytorch-porting",
+    "scores": [4,4,5,4,4,4,4,4,4,3,4,4,4,4,4,3,4,4,4,4],
+    "evidence": ["references/semantics.md", "references/semantics.md", "validation/results/resnet-training.json and rnn-training.json", "validation/results/resnet-forward.json and rnn-training.json", "references/training.md and both real training reports", "scripts/parity.py and tests/test_parity.py", "both real training reports and semantic-probes.json", "semantic-probes.json AdamW and ResNet momentum checks", "references/performance.md and three CPU benchmark reports", "references/execution.md; GPU/TPU/distributed not run", "references/validation.md and agent-traces.md", "references/recovery.md and actual interruption recovery", "SKILL.md staged gates and negative tests", "tests/test_parity.py, semantic-probes.json, adversarial-review.md", "code fingerprints and repeated model suites", "INSTALL.md and installation-smoke.json; no full harness agent trials", "Compact core with eight on-demand references; measured package footprint", "README.md, source index and provenance", "native bounded ports, tested helper, package checks", "pinned source ledger, traces, iteration log and explicit negative findings"],
+    "limitations": "Self-assessment under the same rubric, not an independent benchmark. CPU synthetic ports do not establish production accuracy, full architecture coverage or accelerator portability. ResNet no-regression performance gate remains failed in measured CPU cases. Score five for bidirectionality is supported by two executed native ports, not a claim of universal conversion completeness."
+  }
+}

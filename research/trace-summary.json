@@ -1,0 +1,227 @@
+[
+  {
+    "model": "deepseek-R1",
+    "level": 1,
+    "problem_id": 1,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level1/eval_result_last_only/deepseek-R1/problem_1/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 3,
+    "valid_timed_attempts": 3,
+    "consecutive_unchanged_code": 0,
+    "best_valid_turn": 7,
+    "best_reported_runtime_ms": 1.42,
+    "last_turn_valid": false,
+    "last_turn_runtime_ms": -1.0,
+    "devices": [
+      "cuda:1",
+      "cuda:2"
+    ]
+  },
+  {
+    "model": "deepseek-v3",
+    "level": 1,
+    "problem_id": 1,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level1/eval_result_last_only/deepseek-v3/problem_1/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 10,
+    "valid_timed_attempts": 10,
+    "consecutive_unchanged_code": 7,
+    "best_valid_turn": 6,
+    "best_reported_runtime_ms": 2.44,
+    "last_turn_valid": true,
+    "last_turn_runtime_ms": 2.45,
+    "devices": [
+      "cuda:1",
+      "cuda:2",
+      "cuda:3",
+      "cuda:4",
+      "cuda:6",
+      "cuda:7"
+    ]
+  },
+  {
+    "model": "llama-3.1-70b-inst",
+    "level": 1,
+    "problem_id": 1,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level1/eval_result_last_only/llama-3.1-70b-inst/problem_1/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 10,
+    "valid_timed_attempts": 10,
+    "consecutive_unchanged_code": 4,
+    "best_valid_turn": 3,
+    "best_reported_runtime_ms": 6.36,
+    "last_turn_valid": true,
+    "last_turn_runtime_ms": 6.37,
+    "devices": [
+      "cuda:0",
+      "cuda:1",
+      "cuda:2",
+      "cuda:3",
+      "cuda:5",
+      "cuda:7"
+    ]
+  },
+  {
+    "model": "deepseek-R1",
+    "level": 1,
+    "problem_id": 19,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level1/eval_result_last_only/deepseek-R1/problem_19/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 8,
+    "valid_timed_attempts": 8,
+    "consecutive_unchanged_code": 0,
+    "best_valid_turn": 7,
+    "best_reported_runtime_ms": 0.0036,
+    "last_turn_valid": true,
+    "last_turn_runtime_ms": 0.0139,
+    "devices": [
+      "cuda:0",
+      "cuda:1",
+      "cuda:2",
+      "cuda:5",
+      "cuda:7"
+    ]
+  },
+  {
+    "model": "deepseek-v3",
+    "level": 1,
+    "problem_id": 19,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level1/eval_result_last_only/deepseek-v3/problem_19/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 10,
+    "valid_timed_attempts": 10,
+    "consecutive_unchanged_code": 1,
+    "best_valid_turn": 6,
+    "best_reported_runtime_ms": 0.0121,
+    "last_turn_valid": true,
+    "last_turn_runtime_ms": 0.0129,
+    "devices": [
+      "cuda:0",
+      "cuda:1",
+      "cuda:2",
+      "cuda:3",
+      "cuda:5",
+      "cuda:7"
+    ]
+  },
+  {
+    "model": "llama-3.1-70b-inst",
+    "level": 1,
+    "problem_id": 19,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level1/eval_result_last_only/llama-3.1-70b-inst/problem_19/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 9,
+    "valid_timed_attempts": 9,
+    "consecutive_unchanged_code": 0,
+    "best_valid_turn": 2,
+    "best_reported_runtime_ms": 0.019,
+    "last_turn_valid": true,
+    "last_turn_runtime_ms": 0.039,
+    "devices": [
+      "cuda:1",
+      "cuda:2",
+      "cuda:3",
+      "cuda:5",
+      "cuda:6",
+      "cuda:7"
+    ]
+  },
+  {
+    "model": "deepseek-R1",
+    "level": 1,
+    "problem_id": 40,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level1/eval_result_last_only/deepseek-R1/problem_40/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 4,
+    "valid_timed_attempts": 4,
+    "consecutive_unchanged_code": 0,
+    "best_valid_turn": 10,
+    "best_reported_runtime_ms": 1.5,
+    "last_turn_valid": true,
+    "last_turn_runtime_ms": 1.5,
+    "devices": [
+      "cuda:0",
+      "cuda:1",
+      "cuda:4"
+    ]
+  },
+  {
+    "model": "deepseek-v3",
+    "level": 1,
+    "problem_id": 40,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level1/eval_result_last_only/deepseek-v3/problem_40/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 8,
+    "valid_timed_attempts": 6,
+    "consecutive_unchanged_code": 6,
+    "best_valid_turn": 5,
+    "best_reported_runtime_ms": 1320.0,
+    "last_turn_valid": true,
+    "last_turn_runtime_ms": 1320.0,
+    "devices": [
+      "cuda:0"
+    ]
+  },
+  {
+    "model": "llama-3.1-70b-inst",
+    "level": 1,
+    "problem_id": 40,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level1/eval_result_last_only/llama-3.1-70b-inst/problem_40/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 0,
+    "valid_timed_attempts": 0,
+    "consecutive_unchanged_code": 8,
+    "best_valid_turn": null,
+    "best_reported_runtime_ms": null,
+    "last_turn_valid": false,
+    "last_turn_runtime_ms": -1.0,
+    "devices": []
+  },
+  {
+    "model": "deepseek-R1",
+    "level": 2,
+    "problem_id": 37,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level2/eval_result_last_only/deepseek-R1/problem_37/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 3,
+    "valid_timed_attempts": 3,
+    "consecutive_unchanged_code": 0,
+    "best_valid_turn": 1,
+    "best_reported_runtime_ms": 0.0802,
+    "last_turn_valid": false,
+    "last_turn_runtime_ms": -1.0,
+    "devices": [
+      "cuda:2"
+    ]
+  },
+  {
+    "model": "deepseek-v3",
+    "level": 2,
+    "problem_id": 37,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level2/eval_result_last_only/deepseek-v3/problem_37/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 0,
+    "valid_timed_attempts": 0,
+    "consecutive_unchanged_code": 8,
+    "best_valid_turn": null,
+    "best_reported_runtime_ms": null,
+    "last_turn_valid": false,
+    "last_turn_runtime_ms": -1.0,
+    "devices": []
+  },
+  {
+    "model": "llama-3.1-70b-inst",
+    "level": 2,
+    "problem_id": 37,
+    "url": "https://huggingface.co/datasets/ScalingIntelligence/kernelbench-samples/resolve/b32b70bf2d84c7395a94a214e83183152233f298/iterative_refinement/level2/eval_result_last_only/llama-3.1-70b-inst/problem_37/sample_0/log.json",
+    "attempts": 10,
+    "reported_correct": 0,
+    "valid_timed_attempts": 0,
+    "consecutive_unchanged_code": 5,
+    "best_valid_turn": null,
+    "best_reported_runtime_ms": null,
+    "last_turn_valid": false,
+    "last_turn_runtime_ms": -1.0,
+    "devices": []
+  }
+]
