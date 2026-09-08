@@ -18,3 +18,11 @@ jobs:
       - run: ruff check tools tests validation skills/jax-pytorch-porting/scripts
       - run: python tools/check_repo.py
       - run: python tools/package_skill.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: skill-package
+          path: |
+            dist/skill.zip
+            dist/manifest.json
+          if-no-files-found: error
+          retention-days: 7
