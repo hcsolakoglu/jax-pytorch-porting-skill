@@ -1,0 +1,294 @@
+{
+  "evidence_class": "OBSERVED",
+  "stage": "source-only, before target implementation",
+  "versions": {
+    "jax": "0.11.1",
+    "torch": "2.14.0+cpu",
+    "numpy": "2.5.2"
+  },
+  "backend": "[CpuDevice(id=0)]",
+  "shape": [
+    2,
+    17,
+    19,
+    3
+  ],
+  "num_filters": 4,
+  "source_repeat_exact": true,
+  "source_fp32_vs_fp64_max_abs": 1.892489869259606e-07,
+  "source_fp32_vs_fp64_mean_abs": 2.1956960462847552e-08,
+  "zero_residual_scales": [
+    "ResNetBlock_0/BatchNorm_1/scale",
+    "ResNetBlock_1/BatchNorm_1/scale",
+    "ResNetBlock_2/BatchNorm_1/scale",
+    "ResNetBlock_3/BatchNorm_1/scale",
+    "ResNetBlock_4/BatchNorm_1/scale",
+    "ResNetBlock_5/BatchNorm_1/scale",
+    "ResNetBlock_6/BatchNorm_1/scale",
+    "ResNetBlock_7/BatchNorm_1/scale"
+  ],
+  "parameter_shapes": {
+    "Dense_0/bias": [
+      1000
+    ],
+    "Dense_0/kernel": [
+      32,
+      1000
+    ],
+    "ResNetBlock_0/BatchNorm_0/bias": [
+      4
+    ],
+    "ResNetBlock_0/BatchNorm_0/scale": [
+      4
+    ],
+    "ResNetBlock_0/BatchNorm_1/bias": [
+      4
+    ],
+    "ResNetBlock_0/BatchNorm_1/scale": [
+      4
+    ],
+    "ResNetBlock_0/Conv_0/kernel": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "ResNetBlock_0/Conv_1/kernel": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "ResNetBlock_1/BatchNorm_0/bias": [
+      4
+    ],
+    "ResNetBlock_1/BatchNorm_0/scale": [
+      4
+    ],
+    "ResNetBlock_1/BatchNorm_1/bias": [
+      4
+    ],
+    "ResNetBlock_1/BatchNorm_1/scale": [
+      4
+    ],
+    "ResNetBlock_1/Conv_0/kernel": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "ResNetBlock_1/Conv_1/kernel": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "ResNetBlock_2/BatchNorm_0/bias": [
+      8
+    ],
+    "ResNetBlock_2/BatchNorm_0/scale": [
+      8
+    ],
+    "ResNetBlock_2/BatchNorm_1/bias": [
+      8
+    ],
+    "ResNetBlock_2/BatchNorm_1/scale": [
+      8
+    ],
+    "ResNetBlock_2/Conv_0/kernel": [
+      3,
+      3,
+      4,
+      8
+    ],
+    "ResNetBlock_2/Conv_1/kernel": [
+      3,
+      3,
+      8,
+      8
+    ],
+    "ResNetBlock_2/conv_proj/kernel": [
+      1,
+      1,
+      4,
+      8
+    ],
+    "ResNetBlock_2/norm_proj/bias": [
+      8
+    ],
+    "ResNetBlock_2/norm_proj/scale": [
+      8
+    ],
+    "ResNetBlock_3/BatchNorm_0/bias": [
+      8
+    ],
+    "ResNetBlock_3/BatchNorm_0/scale": [
+      8
+    ],
+    "ResNetBlock_3/BatchNorm_1/bias": [
+      8
+    ],
+    "ResNetBlock_3/BatchNorm_1/scale": [
+      8
+    ],
+    "ResNetBlock_3/Conv_0/kernel": [
+      3,
+      3,
+      8,
+      8
+    ],
+    "ResNetBlock_3/Conv_1/kernel": [
+      3,
+      3,
+      8,
+      8
+    ],
+    "ResNetBlock_4/BatchNorm_0/bias": [
+      16
+    ],
+    "ResNetBlock_4/BatchNorm_0/scale": [
+      16
+    ],
+    "ResNetBlock_4/BatchNorm_1/bias": [
+      16
+    ],
+    "ResNetBlock_4/BatchNorm_1/scale": [
+      16
+    ],
+    "ResNetBlock_4/Conv_0/kernel": [
+      3,
+      3,
+      8,
+      16
+    ],
+    "ResNetBlock_4/Conv_1/kernel": [
+      3,
+      3,
+      16,
+      16
+    ],
+    "ResNetBlock_4/conv_proj/kernel": [
+      1,
+      1,
+      8,
+      16
+    ],
+    "ResNetBlock_4/norm_proj/bias": [
+      16
+    ],
+    "ResNetBlock_4/norm_proj/scale": [
+      16
+    ],
+    "ResNetBlock_5/BatchNorm_0/bias": [
+      16
+    ],
+    "ResNetBlock_5/BatchNorm_0/scale": [
+      16
+    ],
+    "ResNetBlock_5/BatchNorm_1/bias": [
+      16
+    ],
+    "ResNetBlock_5/BatchNorm_1/scale": [
+      16
+    ],
+    "ResNetBlock_5/Conv_0/kernel": [
+      3,
+      3,
+      16,
+      16
+    ],
+    "ResNetBlock_5/Conv_1/kernel": [
+      3,
+      3,
+      16,
+      16
+    ],
+    "ResNetBlock_6/BatchNorm_0/bias": [
+      32
+    ],
+    "ResNetBlock_6/BatchNorm_0/scale": [
+      32
+    ],
+    "ResNetBlock_6/BatchNorm_1/bias": [
+      32
+    ],
+    "ResNetBlock_6/BatchNorm_1/scale": [
+      32
+    ],
+    "ResNetBlock_6/Conv_0/kernel": [
+      3,
+      3,
+      16,
+      32
+    ],
+    "ResNetBlock_6/Conv_1/kernel": [
+      3,
+      3,
+      32,
+      32
+    ],
+    "ResNetBlock_6/conv_proj/kernel": [
+      1,
+      1,
+      16,
+      32
+    ],
+    "ResNetBlock_6/norm_proj/bias": [
+      32
+    ],
+    "ResNetBlock_6/norm_proj/scale": [
+      32
+    ],
+    "ResNetBlock_7/BatchNorm_0/bias": [
+      32
+    ],
+    "ResNetBlock_7/BatchNorm_0/scale": [
+      32
+    ],
+    "ResNetBlock_7/BatchNorm_1/bias": [
+      32
+    ],
+    "ResNetBlock_7/BatchNorm_1/scale": [
+      32
+    ],
+    "ResNetBlock_7/Conv_0/kernel": [
+      3,
+      3,
+      32,
+      32
+    ],
+    "ResNetBlock_7/Conv_1/kernel": [
+      3,
+      3,
+      32,
+      32
+    ],
+    "bn_init/bias": [
+      4
+    ],
+    "bn_init/scale": [
+      4
+    ],
+    "conv_init/kernel": [
+      7,
+      7,
+      3,
+      4
+    ]
+  },
+  "batchnorm_forward_max_abs": 3.5762786865234375e-07,
+  "flax_running_variance": [
+    0.9472499489784241,
+    0.9472499489784241,
+    0.9472499489784241
+  ],
+  "torch_running_variance": [
+    0.9539999961853027,
+    0.9539999961853027,
+    0.9539999961853027
+  ],
+  "notes": [
+    "Torch momentum complemented to 0.1; native running variance still differs.",
+    "Zero residual scales are original source initialization, not a port defect."
+  ]
+}

@@ -6,6 +6,8 @@ Pin a working source revision and validate its expected task behavior. Use origi
 
 Test that the oracle and comparator are sensitive: intentionally perturb one mapped parameter, reorder one axis, change one mask bit or state value, and confirm an expected failure. Mark these as injected negative controls, not bugs discovered in a real port. A constant output, zero residual scale, saturation, dead activation or zero hidden state can conceal a broken implementation. Inspect intermediate activations and nonzero gradients; use source-supported alternative values to activate relevant paths.
 
+Keep original-checkpoint and diagnostic active-path cases separate. Never alter a production checkpoint to make its test more convenient. For each claimed parameter path, establish that at least one fixture is sensitive to that path, or mark it untested. A forward-only normalization probe is insufficient: compare the next running-state value and a subsequent evaluation call as well.
+
 Freeze goldens and test logic separately from target changes. Never derive expected values by calling the target. A source implementation and a mathematically independent high-precision diagnostic are different oracles with different purposes. Do not silently replace source behavior with a supposedly better formula.
 
 ## Numerical budgets, not one universal tolerance
