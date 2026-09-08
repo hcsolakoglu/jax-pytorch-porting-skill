@@ -1,0 +1,47 @@
+{
+  "evidence_class": "OBSERVED",
+  "installer": "skills@1.5.25",
+  "exit_code": 0,
+  "scope": "Ephemeral HOME installation paths and file integrity only; no agent model invoked",
+  "paths": [
+    {
+      "path": "~/.agents/skills/jax-pytorch-porting",
+      "exists": true,
+      "symlink": false,
+      "entry_matches": true
+    },
+    {
+      "path": "~/.claude/skills/jax-pytorch-porting",
+      "exists": true,
+      "symlink": true,
+      "entry_matches": true
+    },
+    {
+      "path": "~/.cursor/skills/jax-pytorch-porting",
+      "exists": false,
+      "symlink": false,
+      "entry_matches": false
+    },
+    {
+      "path": "~/.codex/skills/jax-pytorch-porting",
+      "exists": false,
+      "symlink": false,
+      "entry_matches": false
+    },
+    {
+      "path": "~/.gemini/antigravity/skills/jax-pytorch-porting",
+      "exists": false,
+      "symlink": false,
+      "entry_matches": false
+    },
+    {
+      "path": "~/.gemini/config/skills/jax-pytorch-porting",
+      "exists": false,
+      "symlink": false,
+      "entry_matches": false
+    }
+  ],
+  "actual_user_home_modified": false,
+  "prior_attempt": "Inherited-stdin run timed out after startup with stopped processes; retry closes stdin.",
+  "output_tail": "\n\u001b[38;5;250m\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\u2588\u2588\u2557  \u2588\u2588\u2557\u2588\u2588\u2557\u2588\u2588\u2557     \u2588\u2588\u2557     \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\u001b[0m\n\u001b[38;5;248m\u2588\u2588\u2554\u2550\u2550\u2550\u2550\u255d\u2588\u2588\u2551 \u2588\u2588\u2554\u255d\u2588\u2588\u2551\u2588\u2588\u2551     \u2588\u2588\u2551     \u2588\u2588\u2554\u2550\u2550\u2550\u2550\u255d\u001b[0m\n\u001b[38;5;245m\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\u2588\u2588\u2588\u2588\u2588\u2554\u255d \u2588\u2588\u2551\u2588\u2588\u2551     \u2588\u2588\u2551     \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\u001b[0m\n\u001b[38;5;243m\u255a\u2550\u2550\u2550\u2550\u2588\u2588\u2551\u2588\u2588\u2554\u2550\u2588\u2588\u2557 \u2588\u2588\u2551\u2588\u2588\u2551     \u2588\u2588\u2551     \u255a\u2550\u2550\u2550\u2550\u2588\u2588\u2551\u001b[0m\n\u001b[38;5;240m\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2551\u2588\u2588\u2551  \u2588\u2588\u2557\u2588\u2588\u2551\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2551\u001b[0m\n\u001b[38;5;238m\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u255d\u255a\u2550\u255d  \u255a\u2550\u255d\u255a\u2550\u255d\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u255d\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u255d\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u255d\u001b[0m\n\n\u250c  \u001b[46m\u001b[30m skills \u001b[39m\u001b[49m\n\u2502\n\u2502  \u001b[2mTip: use the --yes (-y) and --global (-g) flags to install without prompts.\u001b[22m\n\u001b[?25l\u2502\n\u25c7  Source: <project>/skills/jax-pytorch-porting\n\u001b[?25h\u001b[?25l\u2502\n\u25c7  Local path validated\n\u001b[?25h\u001b[?25l\u2502\n\u25c7  Found \u001b[32m1\u001b[39m skill\n\u001b[?25h\u2502\n\u25cf  Selected 1 skill: \u001b[36mjax-pytorch-porting\u001b[39m\n\n\u2502\n\u25c7  Installation Summary \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n\u2502                                           \u2502\n\u2502  \u001b[36m~/.agents/skills/jax-pytorch-porting\u001b[39m     \u2502\n\u2502    \u001b[32muniversal:\u001b[39m Codex, Cursor, Antigravity  \u2502\n\u2502    \u001b[2msymlink \u2192\u001b[22m Claude Code                  \u2502\n\u2502                                           \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n\u001b[?25l\u2502\n\u25c7  Installation complete\n\u001b[?25h\n\u2502\n\u25c7  \u001b[32mInstalled 1 skill\u001b[39m \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n\u2502                                           \u2502\n\u2502  \u001b[32m\u2713\u001b[39m ~/.agents/skills/jax-pytorch-porting   \u2502\n\u2502    \u001b[32muniversal:\u001b[39m Codex, Cursor, Antigravity  \u2502\n\u2502    \u001b[2msymlinked:\u001b[22m Claude Code                 \u2502\n\u2502                                           \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n\n\u2502\n\u2514  \u001b[32mDone!\u001b[39m\u001b[2m  Review skills before use; they run with full agent permissions.\u001b[22m\n\n"
+}
