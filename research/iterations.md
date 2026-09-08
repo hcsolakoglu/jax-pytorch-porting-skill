@@ -46,3 +46,12 @@ Initial version `0.1.0`, commit `8dc8ece`, contains a complete staged workflow a
 - **Generalization:** relevant to gradients, complex operators, large reductions, exact checkpoint fields and any numeric comparison, independently of architecture or port direction. Unsupported-range rejection is explicit rather than claiming universal numeric coverage.
 - **Regression/contradiction check:** 11 helper tests pass; serialized CPU revalidation passes 645 ResNet training and 435 recurrent comparison records with unchanged budgets. Exceptional slots require exact finite-component agreement, documented separately from ordinary tolerance comparisons.
 - **Result:** four false-confidence cases are mechanically guarded; both genuine ports remain valid within their recorded development scope.
+
+## Iteration 6: extract failure and recovery mechanisms from released trajectories
+
+- **Weakness:** a simple correctness flag could admit invalid timing sentinels; final-attempt selection discards earlier working candidates; repeated identical code can look like productive iteration; failures can be mislabeled as compilation errors.
+- **Evidence:** twelve matched KernelBench logs, 120 attempts, pinned dataset revision and hashes in `trace-cohort.json`; detailed code-transition review in `agent-traces.md`. V3 LayerNorm includes correctness passes with runtime -1; R1 matmul and composite end in compile failure after valid incumbents; repeated LayerNorm code and redundant quadratic reductions show wasted compute.
+- **Proposed/implemented change:** timing eligibility checks and a unit test, remove misleading standalone-feedback interpretation, separate correctness/performance incumbents, configuration-aware hash deduplication, static work/traffic audit and minimal API probes in recovery guidance.
+- **Generalization:** mechanisms apply to graph compilers, checkpoint conversion, stateful training and kernel work in both directions. Benchmark permissions to retain native PyTorch operations do not transfer into a requested source-free JAX runtime.
+- **Regression/contradiction check:** 12 cheap tests pass; all 120 records remain represented. Published timings are marked external and are not treated as our measurements or current global agent rankings. No generated CUDA code was executed, and no validation budget changed.
+- **Result:** trace analysis is grounded in complete released attempts, including unsuccessful trajectories and explicit evidence gaps.
