@@ -34,6 +34,8 @@ Prefer a simple native implementation. Flax Linen, Flax NNX, Equinox, and Haiku 
 
 Do not load every reference or unrelated model family. Keep only current contract, mapping, earliest failure, accepted findings, and next discriminating test in active context. Store long logs and rejected hypotheses in project files.
 
+Verify required reference files exist in the installed bundle before relying on them. A missing resource blocks its dependent decision, not unrelated work. For handoff, check the packaged copy rather than only a working checkout; exclude credentials, private fixtures, environment caches and unlicensed artifacts.
+
 ## Risk assessment before implementation
 
 Rank components by likelihood of silent error, impact, and cost of discovering failure late. Investigate highest-risk semantics with tiny probes before building their dependants. Typical high risks: custom CUDA/XLA operators; custom VJP/JVP/autograd; data-dependent control flow; mutation/aliasing; stochastic or recurrent state; normalization; attention masking; sparse/quantized tensors; fused kernels; distributed collectives; checkpoint naming and layout.
@@ -66,7 +68,7 @@ Each gate depends on earlier relevant gates. An inference-only contract may mark
 | 17. Full contract | Run representative inference/task metrics and required training scale only after cheap gates pass. |
 | 18. Handoff | Report pass/fail/untested/not-applicable per gate, measured performance, deviations, reproducible commands, and remaining risks. |
 
-Performance feasibility may be assessed early with an unchanged source-only profile. Candidate speed comparisons remain gated by correctness. A cheap GPU-only import/capability probe can precede CPU parity when hardware-specific code requires it; this is not permission for expensive workloads while earlier applicable checks fail.
+Performance feasibility may be assessed early with an unchanged source-only profile. Candidate speed comparisons remain gated by correctness on that exact backend, dtype and compiler mode. Before timing a newly compiled or accelerator candidate, re-run its affected numerical/state gates; the later backend matrix expands coverage rather than deferring these prerequisites. A cheap GPU-only import/capability probe can precede CPU parity when hardware-specific code requires it; this is not permission for expensive workloads while earlier applicable checks fail.
 
 ## Rules that prevent false success
 

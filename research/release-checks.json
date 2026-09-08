@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "Offline structure, links, syntax, provenance and packaging prerequisites",
+  "repository_files": 82,
+  "python_files_parsed": 28,
+  "local_links_checked": 53,
+  "original_hashes_verified": 7,
+  "packaged_files": 12,
+  "competitors": 25,
+  "individual_scores": 500,
+  "iterations": 10,
+  "model_evidence_fresh": true,
+  "performance_gate": "ResNet CPU no-regression remains FAILED; not concealed by release checks",
+  "remote_links": "Selected authoritative sources reviewed separately; no claim of exhaustive live HTTP checks"
+}
