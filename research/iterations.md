@@ -19,3 +19,12 @@ Initial version `0.1.0`, commit `8dc8ece`, contains a complete staged workflow a
 - **Generalization:** collective-axis binding applies to BatchNorm and reductions in transformed source code. Mapping-plus-resume applies across optimizers and serialization formats, not only SGD/Flax/Torch.
 - **Regression/contradiction check:** frozen budgets and original source hashes unchanged; no target-port references; no GPU, TPU, multi-device, ImageNet accuracy or Orbax-file certification claimed. Cheap comparator gates ran before model validation.
 - **Result:** required bounded JAX-to-PyTorch model/training port passes its declared numerical scope. Performance remains unmeasured at this iteration.
+
+## Iteration 3: recurrent semantics, alias identity and stochastic evidence levels
+
+- **Weakness:** a generic dropout or checkpoint gate could be overread as native stochastic equivalence; zero hidden state and equal-but-untied weights could provide false confidence.
+- **Evidence:** `validation/results/rnn-training.json`: four original PyTorch recurrent families and a tied LSTM pass inference, parameter/hidden-state gradients, three truncated training chunks and one resumed step. The first run produced 430 comparison records. Source code and official GRU equations establish reset-after-affine behavior and separate input/recurrent biases. The original clipping implementation includes epsilon, which the port preserves explicitly.
+- **Proposed/implemented change:** native JAX `scan` port and training step, nonzero-state probes, short final chunk, unique tied-parameter checks, injected dropout masks, native key-repeatability checks, and explicit separation of four stochastic evidence levels. RNG checkpoint records now include algorithm/dtype and a next-draw test.
+- **Generalization:** parameter identity matters to all tied/shared networks; explicit stochastic evidence levels apply to dropout, augmentation, diffusion noise and distributed RNG. Raw-key metadata applies beyond either validation model.
+- **Regression/contradiction check:** original files and frozen numerical budgets unchanged. Injected dropout is labeled a diagnostic seam, not native multi-layer RNG parity. Native fused inter-layer dropout distributions, corpus perplexity, long convergence and accelerators remain untested. No numerical failure occurred in the initial port run; that is not proof of exhaustive correctness.
+- **Result:** bounded PyTorch-to-JAX inference and training port passes. Added RNG-resume regression is required before this iteration is committed.

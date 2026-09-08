@@ -59,6 +59,8 @@ Validate teacher-forced forward, incremental decode, cache write/read offsets, r
 
 For LSTM/GRU/RNN, record sequence-major/batch-major convention, layer/direction stacking, gate order, input and recurrent bias identities, initial/final hidden state, cell state, truncation/detach boundary, and dropout placement. Torch GRU applies its reset gate after the hidden affine for the new gate; a generic GRU formula may apply it before. Do not merge two biases merely because their forward sum looks redundant: their optimizer updates and decay can differ.
 
+Exercise nonzero recurrent state and a short final training chunk. A zero-state first step can conceal a missing recurrent term; a fixed-length-only loop can conceal truncation and loss-denominator errors. Verify that a tied embedding/output projection contributes gradients to one parameter leaf and one optimizer identity, rather than merely loading equal arrays twice.
+
 ## Dtype, precision and exceptional values
 
 Declare parameter, input, output, accumulator, gradient, optimizer-state and master-weight dtypes separately. JAX defaults commonly restrict 64-bit values unless enabled; NumPy host construction may accidentally introduce FP64. Weak Python scalars and strongly typed 0-D arrays can promote differently. Lower-level `lax` primitives are not interchangeable with NumPy-style promotion. Check mixed signed/unsigned integers and complex conjugate differentiation explicitly when relevant.

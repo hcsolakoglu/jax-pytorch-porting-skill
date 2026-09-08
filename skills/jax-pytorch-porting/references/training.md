@@ -42,6 +42,8 @@ For FP32 Adam-like comparisons, also probe tiny gradients where epsilon dominate
 
 First establish deterministic training parity with dropout disabled or source-derived masks injected through a documented test seam. This does not validate native stochastic behavior. Separately verify mask rate, scaling, broadcast axes, temporal correlation, replica independence and reproducible restart. A recurrent backend may fuse dropout and offer no direct mask seam; document that limitation rather than claiming exact native RNG parity.
 
+Label stochastic evidence by level: supplied-mask operator parity, native stream repeatability, native distribution/correlation checks, and stochastic training equivalence are separate results. Passing one does not imply the others. For typed JAX keys serialized as raw bits, also persist the PRNG implementation/dtype and verify a subsequent random draw after reconstruction; raw key bits without their algorithm are not a complete portable RNG checkpoint.
+
 When backend arithmetic prevents samplewise long-trajectory matching, use a predeclared statistical protocol: same initialization/data distribution, several independent seeds, paired seeds only when random draws genuinely correspond, confidence intervals for loss/metric differences, convergence/stability criteria and held-out task metrics. Set sample size and equivalence margins from task sensitivity, not after seeing results. Failure to reject a difference is not proof of equivalence. Tiny development runs cannot certify large-scale convergence.
 
 ## Checkpoints and resume

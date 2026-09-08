@@ -1,0 +1,8010 @@
+{
+  "evidence_class": "OBSERVED",
+  "status": "PASS",
+  "budget_version": 1,
+  "elapsed_seconds": 15.52075110799342,
+  "comparison_records": 435,
+  "notes": [
+    "Tied LSTM uses one JAX parameter leaf; its gradient matches both source uses combined.",
+    "Explicit diagnostic dropout seam changes only source.drop, never original files or recurrent equations.",
+    "Single-layer input/output dropout masks match exactly; multi-layer native fused dropout distributions remain untested.",
+    "Native JAX RNG repeatability and distinct-key behavior checked separately from cross-framework masks.",
+    "Host token validation prevents silent JAX out-of-bounds gather behavior.",
+    "Five configurations: four recurrent families plus tied-weight LSTM.",
+    "Three training chunks including a short final chunk, followed by one resumed step per configuration.",
+    "Original PyTorch model classes executed; training follows original NLL, clipping and manual SGD equations.",
+    "Pure native JAX scan-based execution; no PyTorch callback or target-port reference.",
+    "CPU FP32 only; no corpus perplexity, long convergence, GPU or TPU claim."
+  ],
+  "checks": [
+    {
+      "name": "LSTM/forward/5/3",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        15,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 255,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 3.365909352022059e-08,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 8.958210340764276e-08,
+      "cosine": 0.9999999999999997,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/hidden/5/3/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 1.623162201472691e-08,
+      "p95_abs": 4.470348358154297e-08,
+      "rms_abs": 2.1986577920150973e-08,
+      "cosine": 0.9999999999999897,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/hidden/5/3/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 2.7496190298171272e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 3.8491805105032554e-08,
+      "cosine": 0.9999999999999934,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/forward/1/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        1,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/hidden/1/1/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        1,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 14,
+      "max_abs": 4.470348358154297e-08,
+      "mean_abs": 1.3637223414012364e-08,
+      "p95_abs": 4.470348358154297e-08,
+      "rms_abs": 1.952448421459331e-08,
+      "cosine": 0.9999999999999879,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/hidden/1/1/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        1,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 14,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 1.9956912313188824e-08,
+      "p95_abs": 4.991888999938964e-08,
+      "rms_abs": 2.6209740488734633e-08,
+      "cosine": 0.9999999999999913,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/gradient/encoder.weight",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 7.275957614183426e-11,
+      "mean_abs": 1.401959332938799e-11,
+      "p95_abs": 5.7480065152049054e-11,
+      "rms_abs": 2.4047101933156596e-11,
+      "cosine": 0.9999999999999682,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        28,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 140,
+      "max_abs": 2.546585164964199e-11,
+      "mean_abs": 2.5368278906106363e-12,
+      "p95_abs": 1.0049916454590842e-11,
+      "rms_abs": 4.678616691406538e-12,
+      "cosine": 0.9999999999999337,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 8.731149137020111e-11,
+      "mean_abs": 7.323447970502085e-12,
+      "p95_abs": 2.9103830456733704e-11,
+      "rms_abs": 1.5317144831785583e-11,
+      "cosine": 0.9999999999999731,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 5.238689482212067e-10,
+      "mean_abs": 6.889422365929931e-11,
+      "p95_abs": 2.3283064365386963e-10,
+      "rms_abs": 1.3033830641635687e-10,
+      "cosine": 0.9999999999999724,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 5.238689482212067e-10,
+      "mean_abs": 6.56947512262767e-11,
+      "p95_abs": 2.7066562324762336e-10,
+      "rms_abs": 1.3245323042556096e-10,
+      "cosine": 0.999999999999979,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 3.4620542260663754e-11,
+      "p95_abs": 1.7462298274040222e-10,
+      "rms_abs": 7.150857506403186e-11,
+      "cosine": 0.9999999999999777,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 3.7834979593753815e-10,
+      "mean_abs": 2.6348084711757184e-11,
+      "p95_abs": 1.1641532182693481e-10,
+      "rms_abs": 5.0328159524800273e-11,
+      "cosine": 0.999999999999978,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 1.5133991837501526e-09,
+      "mean_abs": 2.398467456389751e-10,
+      "p95_abs": 1.2340024113655084e-09,
+      "rms_abs": 4.771897530549911e-10,
+      "cosine": 0.9999999999999789,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 1.6298145055770874e-09,
+      "mean_abs": 2.2516490259606924e-10,
+      "p95_abs": 1.071020960807799e-09,
+      "rms_abs": 4.438999708552551e-10,
+      "cosine": 0.9999999999999793,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/decoder.weight",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 5.587935447692871e-09,
+      "mean_abs": 7.674606720439526e-10,
+      "p95_abs": 2.3283064365386963e-09,
+      "rms_abs": 1.146806246954033e-09,
+      "cosine": 0.9999999999999737,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/gradient/decoder.bias",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 9.778887033462524e-09,
+      "mean_abs": 3.1774534898645736e-09,
+      "p95_abs": 7.916241884231566e-09,
+      "rms_abs": 4.177233213166158e-09,
+      "cosine": 0.9999999999999943,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/hidden-gradient/0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 2.9103830456733704e-10,
+      "mean_abs": 5.985341323096128e-11,
+      "p95_abs": 2.3137545213103282e-10,
+      "rms_abs": 9.801507237816447e-11,
+      "cosine": 0.9999999999999718,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/hidden-gradient/1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 9.330441181581201e-11,
+      "p95_abs": 3.4924596548080444e-10,
+      "rms_abs": 1.4636720503783466e-10,
+      "cosine": 0.9999999999999868,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/train/0/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 4.470348358154297e-08,
+      "mean_abs": 1.1974147387913296e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 1.6227986468728674e-08,
+      "cosine": 0.9999999999999949,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/train/0/hidden/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 8.940696716308594e-08,
+      "mean_abs": 1.862645149230957e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 2.7615529732223636e-08,
+      "cosine": 0.9999999999999967,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 140,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 2.66092164175851e-10,
+      "p95_abs": 0.0,
+      "rms_abs": 1.408027384464544e-09,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.347580721147922e-10,
+      "p95_abs": 6.402842700481382e-11,
+      "rms_abs": 9.673899338350203e-10,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/0/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 9.89530235528946e-10,
+      "mean_abs": 3.7663780591067146e-10,
+      "p95_abs": 9.42964106798172e-10,
+      "rms_abs": 5.152378972503817e-10,
+      "cosine": 0.9999999999999917,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/train/1/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 2.9802322387695312e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 2.9802322387695312e-08,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 4.470348358154297e-08,
+      "mean_abs": 1.9336030596778507e-08,
+      "p95_abs": 3.706663846969603e-08,
+      "rms_abs": 2.2351741790771484e-08,
+      "cosine": 0.9999999999999906,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/train/1/hidden/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 2.4657873880295525e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 3.2333574111986994e-08,
+      "cosine": 0.9999999999999958,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 140,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 2.66092164175851e-10,
+      "p95_abs": 0.0,
+      "rms_abs": 1.408027384464544e-09,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.713212876885879e-10,
+      "p95_abs": 5.122274160385105e-10,
+      "rms_abs": 9.832893054000416e-10,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/1/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 2.7939677238464355e-09,
+      "mean_abs": 7.053398910690756e-10,
+      "p95_abs": 1.6763806343078603e-09,
+      "rms_abs": 1.005018346532545e-09,
+      "cosine": 0.999999999999987,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/train/2/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 1.9868214925130207e-08,
+      "p95_abs": 4.470348358154297e-08,
+      "rms_abs": 2.4910547346873903e-08,
+      "cosine": 0.999999999999987,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/train/2/hidden/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 3.317282313392276e-08,
+      "p95_abs": 8.940696716308594e-08,
+      "rms_abs": 4.3641278222147866e-08,
+      "cosine": 0.9999999999999921,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 2.3283064365386963e-10,
+      "mean_abs": 2.7391840429867015e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 2.5254029061023165e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 140,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 3.3261520521981376e-10,
+      "p95_abs": 1.2107193470001194e-09,
+      "rms_abs": 1.4513614074773706e-09,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 2.6242361411827953e-10,
+      "p95_abs": 9.313225746154785e-10,
+      "rms_abs": 1.220778885083e-09,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/train/2/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 3.725290298461914e-09,
+      "mean_abs": 7.669715320362764e-10,
+      "p95_abs": 2.235174179077147e-09,
+      "rms_abs": 1.1898909546968184e-09,
+      "cosine": 0.9999999999999893,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/checkpoint/decoder.bias",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/decoder.weight",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/encoder.weight",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        28,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 140,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/checkpoint/step",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [],
+      "dtype": "int32",
+      "elements": 1,
+      "mismatches": 0
+    },
+    {
+      "name": "LSTM/checkpoint/next-random-draw",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        4
+      ],
+      "dtype": "float32",
+      "elements": 4,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM/resume/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/resume/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 7.450580596923828e-08,
+      "mean_abs": 2.1642162686302548e-08,
+      "p95_abs": 5.885958671569818e-08,
+      "rms_abs": 2.8521968802193758e-08,
+      "cosine": 0.9999999999999829,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/resume/hidden/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 2.9802322387695312e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 4.220952043920884e-08,
+      "cosine": 0.9999999999999926,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM/resume/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 2.3283064365386963e-10,
+      "mean_abs": 2.7391840429867015e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 2.5254029061023165e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 140,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 196,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 3.3261520521981376e-10,
+      "p95_abs": 1.2107193470001194e-09,
+      "rms_abs": 1.4513614074773706e-09,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        28
+      ],
+      "dtype": "float32",
+      "elements": 28,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 3.988936762599384e-10,
+      "p95_abs": 2.048909664154042e-09,
+      "rms_abs": 1.3808844971407517e-09,
+      "cosine": 0.9999999999999996,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM/resume/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 3.725290298461914e-09,
+      "mean_abs": 8.251791929497438e-10,
+      "p95_abs": 2.9802322387695306e-09,
+      "rms_abs": 1.3280144001924167e-09,
+      "cosine": 0.9999999999999943,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/forward/5/3",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        15,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 255,
+      "max_abs": 4.76837158203125e-07,
+      "mean_abs": 6.731818704044118e-08,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 1.3015977863457515e-07,
+      "cosine": 0.9999999999999993,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/hidden/5/3/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 8.940696716308594e-08,
+      "mean_abs": 1.6364668096814838e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 2.5887864007787634e-08,
+      "cosine": 0.9999999999999953,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/forward/1/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        1,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/hidden/1/1/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        1,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 14,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 1.3703746455056326e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 1.669715078549078e-08,
+      "cosine": 0.9999999999999964,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/gradient/encoder.weight",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 3.2014213502407074e-10,
+      "mean_abs": 4.023711560020114e-11,
+      "p95_abs": 2.2118911147117598e-10,
+      "rms_abs": 7.70745270500895e-11,
+      "cosine": 0.9999999999999803,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        21,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 105,
+      "max_abs": 7.275957614183426e-11,
+      "mean_abs": 7.698764377329055e-12,
+      "p95_abs": 4.329194780439138e-11,
+      "rms_abs": 1.6417871242131468e-11,
+      "cosine": 0.9999999999999808,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 1.4551915228366852e-10,
+      "mean_abs": 1.7542768447271065e-11,
+      "p95_abs": 8.5128704085946e-11,
+      "rms_abs": 3.405267768189651e-11,
+      "cosine": 0.9999999999999818,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 1.0477378964424133e-09,
+      "mean_abs": 1.8666296022101527e-10,
+      "p95_abs": 8.731149137020111e-10,
+      "rms_abs": 3.619101122597774e-10,
+      "cosine": 0.9999999999999822,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 5.238689482212067e-10,
+      "mean_abs": 1.0480843706145173e-10,
+      "p95_abs": 4.94765117764473e-10,
+      "rms_abs": 1.9590632895319514e-10,
+      "cosine": 0.9999999999999788,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 1.0477378964424133e-09,
+      "mean_abs": 7.215169958095541e-11,
+      "p95_abs": 3.696186468005177e-10,
+      "rms_abs": 1.5860472974829605e-10,
+      "cosine": 0.99999999999998,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 3.957075332560684e-11,
+      "p95_abs": 1.6589183360338178e-10,
+      "rms_abs": 7.435904823729869e-11,
+      "cosine": 0.9999999999999816,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 3.259629011154175e-09,
+      "mean_abs": 3.7349915752808255e-10,
+      "p95_abs": 1.3969838619232178e-09,
+      "rms_abs": 8.339209395508324e-10,
+      "cosine": 0.9999999999999841,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 1.862645149230957e-09,
+      "mean_abs": 2.1238866749973524e-10,
+      "p95_abs": 9.313225746154785e-10,
+      "rms_abs": 4.759870448560453e-10,
+      "cosine": 0.9999999999999815,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/decoder.weight",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.2052409789141487e-09,
+      "p95_abs": 3.725290298461914e-09,
+      "rms_abs": 1.7898264179846503e-09,
+      "cosine": 0.999999999999988,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/gradient/decoder.bias",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 1.1175870895385742e-08,
+      "mean_abs": 4.327910787918989e-09,
+      "p95_abs": 8.195638656616208e-09,
+      "rms_abs": 5.423446060720796e-09,
+      "cosine": 0.9999999999999941,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/hidden-gradient/0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 2.143808939893331e-10,
+      "p95_abs": 4.656612873077393e-10,
+      "rms_abs": 2.8801531728548036e-10,
+      "cosine": 0.9999999999999881,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/train/0/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 1.5799222247941154e-08,
+      "p95_abs": 4.395842552185052e-08,
+      "rms_abs": 2.185621912247462e-08,
+      "cosine": 0.9999999999999976,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 105,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 3.725290298461914e-09,
+      "mean_abs": 9.00017614124202e-11,
+      "p95_abs": 1.1641532182693481e-10,
+      "rms_abs": 5.199684821452465e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/0/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 2.7939677238464355e-09,
+      "mean_abs": 6.916439708541422e-10,
+      "p95_abs": 1.6763806343078603e-09,
+      "rms_abs": 9.144783465328318e-10,
+      "cosine": 0.9999999999999879,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/train/1/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 2.9802322387695312e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 2.9802322387695312e-08,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 1.608748875913166e-08,
+      "p95_abs": 5.811452865600573e-08,
+      "rms_abs": 2.302675951773892e-08,
+      "cosine": 0.9999999999999963,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 5.820766091346741e-11,
+      "mean_abs": 6.847960107466754e-13,
+      "p95_abs": 0.0,
+      "rms_abs": 6.313507265255791e-12,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 105,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 4.43486940293085e-11,
+      "p95_abs": 0.0,
+      "rms_abs": 2.032312473617423e-10,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 4.43486940293085e-11,
+      "p95_abs": 0.0,
+      "rms_abs": 2.032312473617423e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 3.725290298461914e-09,
+      "mean_abs": 2.1399875335833605e-10,
+      "p95_abs": 1.862645149230957e-09,
+      "rms_abs": 7.665546124738339e-10,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/1/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 3.725290298461914e-09,
+      "mean_abs": 1.2189368991290822e-09,
+      "p95_abs": 2.9802322387695306e-09,
+      "rms_abs": 1.527294695140192e-09,
+      "cosine": 0.9999999999999929,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/train/2/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 2.9802322387695312e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 2.9802322387695312e-08,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 1.2068388362725576e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 1.6561671164264812e-08,
+      "cosine": 0.9999999999999987,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 5.820766091346741e-11,
+      "mean_abs": 6.847960107466754e-13,
+      "p95_abs": 0.0,
+      "rms_abs": 6.313507265255791e-12,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 105,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 4.43486940293085e-11,
+      "p95_abs": 0.0,
+      "rms_abs": 2.032312473617423e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 4.43486940293085e-11,
+      "p95_abs": 0.0,
+      "rms_abs": 2.032312473617423e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 3.725290298461914e-09,
+      "mean_abs": 1.907646029937167e-10,
+      "p95_abs": 1.862645149230957e-09,
+      "rms_abs": 7.015018093939381e-10,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/train/2/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 3.725290298461914e-09,
+      "mean_abs": 1.2566006797201494e-09,
+      "p95_abs": 3.725290298461914e-09,
+      "rms_abs": 1.6666343814359162e-09,
+      "cosine": 0.9999999999999943,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/checkpoint/decoder.bias",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/decoder.weight",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/encoder.weight",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        21,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 105,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/checkpoint/step",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [],
+      "dtype": "int32",
+      "elements": 1,
+      "mismatches": 0
+    },
+    {
+      "name": "GRU/checkpoint/next-random-draw",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        4
+      ],
+      "dtype": "float32",
+      "elements": 4,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "GRU/resume/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/resume/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 1.8199595312277477e-08,
+      "p95_abs": 4.395842552185052e-08,
+      "rms_abs": 2.345870181632287e-08,
+      "cosine": 0.9999999999999977,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "GRU/resume/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 5.820766091346741e-11,
+      "mean_abs": 6.847960107466754e-13,
+      "p95_abs": 0.0,
+      "rms_abs": 6.313507265255791e-12,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 105,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 4.43486940293085e-11,
+      "p95_abs": 0.0,
+      "rms_abs": 2.032312473617423e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 147,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 4.43486940293085e-11,
+      "p95_abs": 0.0,
+      "rms_abs": 2.032312473617423e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        21
+      ],
+      "dtype": "float32",
+      "elements": 21,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 2.700052842372606e-10,
+      "p95_abs": 1.862645149230957e-09,
+      "rms_abs": 9.942521183850974e-10,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "GRU/resume/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 5.587935447692871e-09,
+      "mean_abs": 1.3764399816008176e-09,
+      "p95_abs": 3.3527612686157207e-09,
+      "rms_abs": 1.9342426689934124e-09,
+      "cosine": 0.9999999999999956,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/forward/5/3",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        15,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 255,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 4.487879136029412e-08,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 1.0344050303395088e-07,
+      "cosine": 0.9999999999999996,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/hidden/5/3/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 2.306132089524042e-08,
+      "p95_abs": 8.791685104370104e-08,
+      "rms_abs": 3.60264289591667e-08,
+      "cosine": 0.9999999999999958,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/forward/1/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        1,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/hidden/1/1/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        1,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 14,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 1.9690820149012974e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 2.33070003565488e-08,
+      "cosine": 0.9999999999999962,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/encoder.weight",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 7.64831544502693e-11,
+      "p95_abs": 2.9103830456733704e-10,
+      "rms_abs": 1.3648682119803658e-10,
+      "cosine": 0.9999999999999892,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 1.7462298274040222e-10,
+      "mean_abs": 6.466507329605519e-11,
+      "p95_abs": 1.6443664208054538e-10,
+      "rms_abs": 7.996171400207714e-11,
+      "cosine": 0.9999999999999877,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 9.38598532229662e-10,
+      "mean_abs": 2.883655038111064e-10,
+      "p95_abs": 5.995389074087141e-10,
+      "rms_abs": 3.640146099910376e-10,
+      "cosine": 0.9999999999999751,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 1.862645149230957e-09,
+      "mean_abs": 9.105341242892401e-10,
+      "p95_abs": 1.862645149230957e-09,
+      "rms_abs": 1.1432286899887466e-09,
+      "cosine": 0.9999999999999731,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 5.903919892651694e-10,
+      "p95_abs": 9.313225746154785e-10,
+      "rms_abs": 6.676685852047131e-10,
+      "cosine": 0.9999999999999907,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 3.259629011154175e-09,
+      "mean_abs": 5.711162699224922e-10,
+      "p95_abs": 1.3038516044616686e-09,
+      "rms_abs": 7.902778574632377e-10,
+      "cosine": 0.9999999999999699,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 3.259629011154175e-09,
+      "mean_abs": 6.514209398657691e-10,
+      "p95_abs": 1.7695128917694079e-09,
+      "rms_abs": 9.147349257497094e-10,
+      "cosine": 0.9999999999999438,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 5.587935447692871e-09,
+      "mean_abs": 1.596552985055106e-09,
+      "p95_abs": 4.610046744346616e-09,
+      "rms_abs": 2.3646110651716886e-09,
+      "cosine": 0.9999999999999898,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 4.190951585769653e-09,
+      "mean_abs": 1.0976301772253854e-09,
+      "p95_abs": 3.3527612686157207e-09,
+      "rms_abs": 1.762232900058266e-09,
+      "cosine": 0.9999999999999775,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/decoder.weight",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 2.155640013828999e-09,
+      "p95_abs": 4.6566128730773926e-09,
+      "rms_abs": 2.7397249478578765e-09,
+      "cosine": 0.9999999999999887,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/gradient/decoder.bias",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 1.1175870895385742e-08,
+      "mean_abs": 4.026600543190451e-09,
+      "p95_abs": 8.195638656616208e-09,
+      "rms_abs": 5.176767972384547e-09,
+      "cosine": 0.9999999999999949,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/hidden-gradient/0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 8.440110832452774e-10,
+      "mean_abs": 1.7914338795457125e-10,
+      "p95_abs": 5.762558430433268e-10,
+      "rms_abs": 2.6101737989804674e-10,
+      "cosine": 0.999999999999985,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 2.696400596981957e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 4.008964950648244e-08,
+      "cosine": 0.999999999999995,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 1.5442848813777068e-11,
+      "p95_abs": 6.984919309616023e-11,
+      "rms_abs": 7.29671645127247e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.3695920214933508e-10,
+      "p95_abs": 1.9790604710578455e-10,
+      "rms_abs": 7.965677689340157e-10,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/0/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 3.749258158838048e-10,
+      "p95_abs": 9.313225746154785e-10,
+      "rms_abs": 4.861298101165468e-10,
+      "cosine": 0.9999999999999941,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 4.76837158203125e-07,
+      "mean_abs": 4.76837158203125e-07,
+      "p95_abs": 4.76837158203125e-07,
+      "rms_abs": 4.76837158203125e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 3.308412574586414e-08,
+      "p95_abs": 8.791685104370104e-08,
+      "rms_abs": 4.50018416221293e-08,
+      "cosine": 0.9999999999999933,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 9.503291577708964e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 6.652304104396275e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 2.60598073732488e-11,
+      "p95_abs": 6.984919309616023e-11,
+      "rms_abs": 1.38021260027846e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 2.3283064365386963e-10,
+      "mean_abs": 4.751645788854482e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 3.3261520521981374e-11,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 2.7391840429867016e-10,
+      "p95_abs": 1.862645149230957e-09,
+      "rms_abs": 1.032242578128974e-09,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/1/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 1.862645149230957e-09,
+      "mean_abs": 6.505562102093416e-10,
+      "p95_abs": 1.2572854757308955e-09,
+      "rms_abs": 8.209987357752026e-10,
+      "cosine": 0.9999999999999934,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 5.960464477539063e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 5.960464477539063e-08,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 3.015711193992978e-08,
+      "p95_abs": 6.668269634246823e-08,
+      "rms_abs": 4.122740087536489e-08,
+      "cosine": 0.9999999999999944,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 9.503291577708964e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 6.652304104396275e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 2.5837073976896247e-11,
+      "p95_abs": 6.984919309616023e-11,
+      "rms_abs": 1.3765973048237506e-10,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 3.4924596548080444e-10,
+      "mean_abs": 7.127468683281723e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 4.989228078297207e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 4.715309673998536e-10,
+      "p95_abs": 3.725290298461914e-09,
+      "rms_abs": 1.5021068341869761e-09,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/train/2/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 1.862645149230957e-09,
+      "mean_abs": 8.799628738094778e-10,
+      "p95_abs": 1.862645149230957e-09,
+      "rms_abs": 1.0516301994090904e-09,
+      "cosine": 0.9999999999999908,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/checkpoint/decoder.bias",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/decoder.weight",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/encoder.weight",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/step",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [],
+      "dtype": "int32",
+      "elements": 1,
+      "mismatches": 0
+    },
+    {
+      "name": "RNN_TANH/checkpoint/next-random-draw",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        4
+      ],
+      "dtype": "float32",
+      "elements": 4,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_TANH/resume/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/resume/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 8.940696716308594e-08,
+      "mean_abs": 2.696400596981957e-08,
+      "p95_abs": 8.828938007354727e-08,
+      "rms_abs": 3.8918651212075395e-08,
+      "cosine": 0.999999999999995,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_TANH/resume/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 1.862645149230957e-09,
+      "mean_abs": 2.1913472343893612e-11,
+      "p95_abs": 0.0,
+      "rms_abs": 2.0203223248818532e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 9.503291577708964e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 6.652304104396275e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 2.0372681319713593e-10,
+      "mean_abs": 6.533512959674913e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 3.3520368943566944e-11,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 2.3283064365386963e-10,
+      "mean_abs": 4.751645788854482e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 3.3261520521981374e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 7.752869121667718e-10,
+      "p95_abs": 7.450580596923828e-09,
+      "rms_abs": 2.0673586185078814e-09,
+      "cosine": 0.9999999999999994,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_TANH/resume/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 3.725290298461914e-09,
+      "mean_abs": 1.2069529689410153e-09,
+      "p95_abs": 2.607703208923339e-09,
+      "rms_abs": 1.5080066848352677e-09,
+      "cosine": 0.9999999999999901,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/forward/5/3",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        15,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 255,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 1.9634471220128676e-08,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 6.841946162981408e-08,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/hidden/5/3/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 4.0800798506963825e-09,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 1.0473805821456734e-08,
+      "cosine": 0.9999999999999994,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/forward/1/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        1,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 1.4024622300091912e-08,
+      "p95_abs": 4.768371582031233e-08,
+      "rms_abs": 5.7824999102671854e-08,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/hidden/1/1/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        1,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 14,
+      "max_abs": 4.470348358154297e-08,
+      "mean_abs": 6.386211940220424e-09,
+      "p95_abs": 2.5331974029541005e-08,
+      "rms_abs": 1.3505324232205238e-08,
+      "cosine": 0.9999999999999979,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 4.76837158203125e-07,
+      "mean_abs": 4.76837158203125e-07,
+      "p95_abs": 4.76837158203125e-07,
+      "rms_abs": 4.76837158203125e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/encoder.weight",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 6.360042949809747e-11,
+      "p95_abs": 2.3283064365386963e-10,
+      "rms_abs": 1.4122062944001412e-10,
+      "cosine": 0.9999999999999895,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 1.1641532182693481e-10,
+      "mean_abs": 1.746229827404022e-11,
+      "p95_abs": 6.475602276623243e-11,
+      "rms_abs": 3.465503880390047e-11,
+      "cosine": 0.9999999999999949,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 2.3283064365386963e-10,
+      "mean_abs": 2.559577946418098e-11,
+      "p95_abs": 1.3387762010097487e-10,
+      "rms_abs": 5.436652373929989e-11,
+      "cosine": 0.9999999999999868,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 2.66092164175851e-10,
+      "p95_abs": 7.916241884231564e-10,
+      "rms_abs": 4.311185794754659e-10,
+      "cosine": 0.9999999999999972,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 1.6630760260990688e-10,
+      "p95_abs": 4.656612873077393e-10,
+      "rms_abs": 2.6400513458710204e-10,
+      "cosine": 0.9999999999999951,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 1.3012270626079824e-10,
+      "p95_abs": 6.519258022308343e-10,
+      "rms_abs": 2.670340677359875e-10,
+      "cosine": 0.9999999999999426,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 2.7939677238464355e-09,
+      "mean_abs": 2.1987498443269608e-10,
+      "p95_abs": 8.381903171539293e-10,
+      "rms_abs": 5.014888474526838e-10,
+      "cosine": 0.9999999999999838,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 4.6566128730773926e-09,
+      "mean_abs": 1.7628605876650128e-09,
+      "p95_abs": 4.027970135211943e-09,
+      "rms_abs": 2.303225204782835e-09,
+      "cosine": 0.9999999999999228,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 2.7939677238464355e-09,
+      "mean_abs": 1.2306762593133109e-09,
+      "p95_abs": 2.7939677238464355e-09,
+      "rms_abs": 1.6904576760813944e-09,
+      "cosine": 0.9999999999999436,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/decoder.weight",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 1.1175870895385742e-08,
+      "mean_abs": 8.359402731186202e-10,
+      "p95_abs": 3.725290298461914e-09,
+      "rms_abs": 1.7463358045231906e-09,
+      "cosine": 0.9999999999999952,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/gradient/decoder.bias",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 1.4901161193847656e-08,
+      "mean_abs": 3.917033181470983e-09,
+      "p95_abs": 1.1920928955078122e-08,
+      "rms_abs": 5.759912019992704e-09,
+      "cosine": 0.999999999999994,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/hidden-gradient/0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 8.149072527885437e-10,
+      "mean_abs": 1.4214102910565478e-10,
+      "p95_abs": 4.59840521216392e-10,
+      "rms_abs": 2.101085556648697e-10,
+      "cosine": 0.9999999999999835,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 2.9802322387695312e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 2.9802322387695312e-08,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 6.031422387985956e-09,
+      "p95_abs": 2.9057264328002866e-08,
+      "rms_abs": 2.004482475324122e-08,
+      "cosine": 0.9999999999999983,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.5205266524334342e-10,
+      "p95_abs": 0.0,
+      "rms_abs": 1.064368656703404e-09,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.210621518998587e-10,
+      "p95_abs": 1.2223608791828122e-10,
+      "rms_abs": 7.851056350986808e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/0/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 2.8932631454047035e-10,
+      "p95_abs": 9.313225746154785e-10,
+      "rms_abs": 4.153860781278659e-10,
+      "cosine": 0.9999999999999966,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 8.692344029744467e-09,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 2.255775298250833e-08,
+      "cosine": 0.999999999999998,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.5205266524334342e-10,
+      "p95_abs": 0.0,
+      "rms_abs": 1.064368656703404e-09,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 2.3283064365386963e-10,
+      "mean_abs": 4.751645788854482e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 3.3261520521981374e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 4.257474626813616e-09,
+      "p95_abs": 2.0861625671386698e-08,
+      "rms_abs": 1.1264219075716352e-08,
+      "cosine": 0.9999999999999988,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 2.1742273341206944e-10,
+      "p95_abs": 9.313225746154785e-10,
+      "rms_abs": 1.0619388124784968e-09,
+      "cosine": 0.9999999999999997,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/1/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 4.006056662868051e-10,
+      "p95_abs": 9.313225746154785e-10,
+      "rms_abs": 5.215812999629943e-10,
+      "cosine": 0.9999999999999968,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 1.1920928955078125e-07,
+      "p95_abs": 1.1920928955078125e-07,
+      "rms_abs": 1.1920928955078125e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 1.1353265671502976e-08,
+      "p95_abs": 5.811452865600573e-08,
+      "rms_abs": 2.912949703294041e-08,
+      "cosine": 0.9999999999999954,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.5205266524334342e-10,
+      "p95_abs": 0.0,
+      "rms_abs": 1.064368656703404e-09,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 5.820766091346741e-10,
+      "mean_abs": 1.1879114472136206e-11,
+      "p95_abs": 0.0,
+      "rms_abs": 8.315380130495344e-11,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 4.257474626813616e-09,
+      "p95_abs": 2.0861625671386698e-08,
+      "rms_abs": 1.1264219075716352e-08,
+      "cosine": 0.9999999999999988,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 1.4901161193847656e-08,
+      "mean_abs": 4.92319417726092e-10,
+      "p95_abs": 2.887099981307978e-09,
+      "rms_abs": 1.920120813461685e-09,
+      "cosine": 0.9999999999999994,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/train/2/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 1.862645149230957e-09,
+      "mean_abs": 6.231643697794746e-10,
+      "p95_abs": 1.4901161193847653e-09,
+      "rms_abs": 7.910801929124956e-10,
+      "cosine": 0.9999999999999956,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/checkpoint/decoder.bias",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/decoder.weight",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/encoder.weight",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/step",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [],
+      "dtype": "int32",
+      "elements": 1,
+      "mismatches": 0
+    },
+    {
+      "name": "RNN_RELU/checkpoint/next-random-draw",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        4
+      ],
+      "dtype": "float32",
+      "elements": 4,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "RNN_RELU/resume/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/resume/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 42,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 7.273185820806594e-09,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 2.078927519558222e-08,
+      "cosine": 0.9999999999999981,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "RNN_RELU/resume/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 85,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 35,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.5205266524334342e-10,
+      "p95_abs": 0.0,
+      "rms_abs": 1.064368656703404e-09,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 49,
+      "max_abs": 4.0745362639427185e-10,
+      "mean_abs": 8.315380130495343e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 5.820766091346741e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 4.257474626813616e-09,
+      "p95_abs": 2.0861625671386698e-08,
+      "rms_abs": 1.1264219075716352e-08,
+      "cosine": 0.9999999999999988,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        7
+      ],
+      "dtype": "float32",
+      "elements": 7,
+      "max_abs": 1.4901161193847656e-08,
+      "mean_abs": 2.128737313406808e-09,
+      "p95_abs": 1.0430812835693349e-08,
+      "rms_abs": 5.632109537858176e-09,
+      "cosine": 0.9999999999999994,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/decoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        7
+      ],
+      "dtype": "float32",
+      "elements": 119,
+      "max_abs": 1.4901161193847656e-08,
+      "mean_abs": 4.996565178412349e-10,
+      "p95_abs": 3.725290298461914e-09,
+      "rms_abs": 1.934281308123825e-09,
+      "cosine": 0.9999999999999994,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "RNN_RELU/resume/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 1.862645149230957e-09,
+      "mean_abs": 8.491470533258775e-10,
+      "p95_abs": 1.862645149230957e-09,
+      "rms_abs": 1.0503976161435032e-09,
+      "cosine": 0.9999999999999958,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/forward/5/3",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        15,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 255,
+      "max_abs": 4.76837158203125e-07,
+      "mean_abs": 5.79684388403799e-08,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 1.2129474140862663e-07,
+      "cosine": 0.9999999999999992,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/hidden/5/3/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 8.940696716308594e-08,
+      "mean_abs": 2.537692327880197e-08,
+      "p95_abs": 6.705522537231445e-08,
+      "rms_abs": 3.514695473126216e-08,
+      "cosine": 0.9999999999999832,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/hidden/5/3/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 3.8100147826804054e-08,
+      "p95_abs": 9.685754776000977e-08,
+      "rms_abs": 4.976674447138999e-08,
+      "cosine": 0.9999999999999902,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/forward/1/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        1,
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/hidden/1/1/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        1,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 12,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 1.179675261179606e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 1.618466078954075e-08,
+      "cosine": 0.9999999999999922,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/hidden/1/1/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        1,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 12,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 1.7695128917694092e-08,
+      "p95_abs": 4.321336746215818e-08,
+      "rms_abs": 2.4070680110380213e-08,
+      "cosine": 0.9999999999999926,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/encoder.weight",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 102,
+      "max_abs": 3.725290298461914e-09,
+      "mean_abs": 9.802569562167513e-10,
+      "p95_abs": 3.259629011154175e-09,
+      "rms_abs": 1.4179756129252088e-09,
+      "cosine": 0.9999999999999798,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 4.274625098332763e-11,
+      "mean_abs": 4.2427111206993434e-12,
+      "p95_abs": 1.8189894035458565e-11,
+      "rms_abs": 7.739287165089929e-12,
+      "cosine": 0.999999999999961,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 1.4551915228366852e-10,
+      "mean_abs": 1.617195266589988e-11,
+      "p95_abs": 7.275957614183426e-11,
+      "rms_abs": 3.2244125763535326e-11,
+      "cosine": 0.9999999999999251,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 1.1059455573558807e-09,
+      "mean_abs": 1.846653200724783e-10,
+      "p95_abs": 8.36735125631093e-10,
+      "rms_abs": 3.2815249651532e-10,
+      "cosine": 0.9999999999998723,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 8.731149137020111e-10,
+      "mean_abs": 1.8349055608268827e-10,
+      "p95_abs": 8.294591680169099e-10,
+      "rms_abs": 3.075188402690657e-10,
+      "cosine": 0.999999999999888,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 7.8580342233181e-10,
+      "mean_abs": 5.2374055709631447e-11,
+      "p95_abs": 2.284650690853594e-10,
+      "rms_abs": 1.3519666908184825e-10,
+      "cosine": 0.9999999999999468,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 7.566995918750763e-10,
+      "mean_abs": 4.8670598415709615e-11,
+      "p95_abs": 2.2409949451684919e-10,
+      "rms_abs": 1.1528211277237335e-10,
+      "cosine": 0.9999999999999548,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 3.841705620288849e-09,
+      "mean_abs": 3.595535721008976e-10,
+      "p95_abs": 1.5250407159328446e-09,
+      "rms_abs": 8.850213763315996e-10,
+      "cosine": 0.9999999999999312,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 4.0745362639427185e-09,
+      "mean_abs": 3.562187581943969e-10,
+      "p95_abs": 1.1292286217212672e-09,
+      "rms_abs": 9.000561022875367e-10,
+      "cosine": 0.9999999999999263,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/gradient/decoder.bias",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 2.2351741790771484e-08,
+      "mean_abs": 4.355302628348856e-09,
+      "p95_abs": 1.0430812835693349e-08,
+      "rms_abs": 6.684450974169762e-09,
+      "cosine": 0.9999999999999896,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/hidden-gradient/0",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 2.9103830456733704e-10,
+      "mean_abs": 7.174902647319767e-11,
+      "p95_abs": 1.8917489796876907e-10,
+      "rms_abs": 9.930860343695756e-11,
+      "cosine": 0.9999999999999875,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/hidden-gradient/1",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 4.656612873077393e-10,
+      "mean_abs": 1.1487423358226402e-10,
+      "p95_abs": 3.7834979593753815e-10,
+      "rms_abs": 1.7249530051668407e-10,
+      "cosine": 0.9999999999999893,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 7.450580596923828e-08,
+      "mean_abs": 2.3037298685974545e-08,
+      "p95_abs": 4.842877388000488e-08,
+      "rms_abs": 2.91267940208616e-08,
+      "cosine": 0.9999999999999891,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/hidden/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 2.8431208597289192e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 3.4906655356857544e-08,
+      "cosine": 0.9999999999999959,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 102,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/0/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 3.526699455345378e-10,
+      "p95_abs": 9.313225746154785e-10,
+      "rms_abs": 4.756128913143374e-10,
+      "cosine": 0.9999999999999971,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 7.450580596923828e-08,
+      "mean_abs": 2.29984935786989e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 3.168588495060834e-08,
+      "cosine": 0.9999999999999908,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/hidden/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 3.293260104126401e-08,
+      "p95_abs": 7.450580596923828e-08,
+      "rms_abs": 4.4489814333970285e-08,
+      "cosine": 0.9999999999999947,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 102,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 1.8375359621702455e-10,
+      "p95_abs": 6.810296326875647e-10,
+      "rms_abs": 1.058273897042634e-09,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/1/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 1.862645149230957e-09,
+      "mean_abs": 5.016130778719397e-10,
+      "p95_abs": 1.1175870895385736e-09,
+      "rms_abs": 7.033612632666067e-10,
+      "cosine": 0.9999999999999972,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/gradient-norm",
+      "status": "PASS",
+      "budget": "rnn_gradient",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.9802322387695312e-08,
+      "mean_abs": 2.9802322387695312e-08,
+      "p95_abs": 2.9802322387695312e-08,
+      "rms_abs": 2.9802322387695312e-08,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 8.940696716308594e-08,
+      "mean_abs": 2.7871768300731976e-08,
+      "p95_abs": 7.82310962677002e-08,
+      "rms_abs": 3.685654361911775e-08,
+      "cosine": 0.9999999999999881,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/hidden/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 1.1920928955078125e-07,
+      "mean_abs": 3.985931268996663e-08,
+      "p95_abs": 1.1920928955078125e-07,
+      "rms_abs": 5.1848401124167255e-08,
+      "cosine": 0.9999999999999933,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 102,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 2.237000301772473e-10,
+      "p95_abs": 9.080395102500863e-10,
+      "rms_abs": 1.1303352839944094e-09,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 6.467517879274156e-12,
+      "p95_abs": 0.0,
+      "rms_abs": 7.761021455128987e-11,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/train/2/parameter/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 1.862645149230957e-09,
+      "mean_abs": 8.765388937557445e-10,
+      "p95_abs": 1.862645149230957e-09,
+      "rms_abs": 1.1208920501616357e-09,
+      "cosine": 0.9999999999999939,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/checkpoint/decoder.bias",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/encoder.weight",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        17,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 102,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/step",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [],
+      "dtype": "int32",
+      "elements": 1,
+      "mismatches": 0
+    },
+    {
+      "name": "LSTM-tied/checkpoint/next-random-draw",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        4
+      ],
+      "dtype": "float32",
+      "elements": 4,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "LSTM-tied/resume/loss",
+      "status": "PASS",
+      "budget": "loss",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 2.384185791015625e-07,
+      "p95_abs": 2.384185791015625e-07,
+      "rms_abs": 2.384185791015625e-07,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 2e-05,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/resume/hidden/0",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 5.960464477539063e-08,
+      "mean_abs": 2.3092272587948376e-08,
+      "p95_abs": 5.960464477539063e-08,
+      "rms_abs": 3.080004290821424e-08,
+      "cosine": 0.9999999999999932,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/resume/hidden/1",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        2,
+        3,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 36,
+      "max_abs": 1.7881393432617188e-07,
+      "mean_abs": 3.574597131874826e-08,
+      "p95_abs": 7.450580596923828e-08,
+      "rms_abs": 5.093496651948155e-08,
+      "cosine": 0.999999999999993,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "LSTM-tied/resume/encoder.weight",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 102,
+      "max_abs": 7.450580596923828e-09,
+      "mean_abs": 3.6294188569573795e-10,
+      "p95_abs": 1.862645149230957e-09,
+      "rms_abs": 1.4160658697408833e-09,
+      "cosine": 0.9999999999999996,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/resume/rnn.weight_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/resume/rnn.weight_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/resume/rnn.bias_ih_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/resume/rnn.bias_hh_l0",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 0.9999999999999998,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/resume/rnn.weight_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 9.313225746154785e-10,
+      "mean_abs": 1.2935035758548312e-11,
+      "p95_abs": 0.0,
+      "rms_abs": 1.0975741799711987e-10,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/resume/rnn.weight_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24,
+        6
+      ],
+      "dtype": "float32",
+      "elements": 144,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/resume/rnn.bias_ih_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/resume/rnn.bias_hh_l1",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "max_abs": 1.4901161193847656e-08,
+      "mean_abs": 6.20881716410319e-10,
+      "p95_abs": 0.0,
+      "rms_abs": 3.041686791657381e-09,
+      "cosine": 0.9999999999999999,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "LSTM-tied/resume/decoder.bias",
+      "status": "PASS",
+      "budget": "parameter_update",
+      "shape": [
+        17
+      ],
+      "dtype": "float32",
+      "elements": 17,
+      "max_abs": 2.3283064365386963e-09,
+      "mean_abs": 1.1299134177320143e-09,
+      "p95_abs": 1.9557774066925046e-09,
+      "rms_abs": 1.352623808037286e-09,
+      "cosine": 0.999999999999995,
+      "mismatches": 0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "dropout/injected-mask-forward",
+      "status": "PASS",
+      "budget": "rnn_forward",
+      "shape": [
+        6,
+        11
+      ],
+      "dtype": "float32",
+      "elements": 66,
+      "max_abs": 2.384185791015625e-07,
+      "mean_abs": 1.0837208140980114e-08,
+      "p95_abs": 0.0,
+      "rms_abs": 5.08310118569399e-08,
+      "cosine": 0.9999999999999997,
+      "mismatches": 0,
+      "atol": 1e-06,
+      "rtol": 2e-05
+    },
+    {
+      "name": "dropout/repeated-key",
+      "status": "PASS",
+      "budget": "checkpoint",
+      "shape": [
+        6,
+        11
+      ],
+      "dtype": "float32",
+      "elements": 66,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "p95_abs": 0.0,
+      "rms_abs": 0.0,
+      "cosine": 1.0000000000000002,
+      "mismatches": 0,
+      "atol": 0.0,
+      "rtol": 0.0
+    }
+  ]
+}
