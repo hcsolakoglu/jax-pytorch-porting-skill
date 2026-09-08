@@ -55,3 +55,12 @@ Initial version `0.1.0`, commit `8dc8ece`, contains a complete staged workflow a
 - **Generalization:** mechanisms apply to graph compilers, checkpoint conversion, stateful training and kernel work in both directions. Benchmark permissions to retain native PyTorch operations do not transfer into a requested source-free JAX runtime.
 - **Regression/contradiction check:** 12 cheap tests pass; all 120 records remain represented. Published timings are marked external and are not treated as our measurements or current global agent rankings. No generated CUDA code was executed, and no validation budget changed.
 - **Result:** trace analysis is grounded in complete released attempts, including unsuccessful trajectories and explicit evidence gaps.
+
+## Iteration 7: challenge cross-architecture assumptions with cheap probes
+
+- **Weakness:** related skills suggest interchangeable activation defaults, uniform all-masked attention behavior, no Equinox state, and both cond branches executing merely because they occur inside scan.
+- **Evidence:** official JAX/PyTorch GELU and attention documentation, JAX cond documentation, Equinox stateful API; `validation/semantic_probes.py` on CPU. Default GELU discrepancy is 4.7313e-4, explicitly aligned exact GELU differs by 4.44e-16. Nonempty attention agrees to 2.3842e-7, whereas all-masked output differs by 0.7705 in this fixture. Three AdamW parameter/moment/counter steps pass including epsilon-dominated and zero gradients. JAXPR preserves cond inside scan and lowers batched predicates to select. JVP/VJP duality error is 2.22e-16.
+- **Proposed/implemented change:** explicit activation defaults, attention axis/mask and empty-row contracts, Equinox State handling and transformation-aware cost analysis. Preserve configurable dictionaries and short heterogeneous loops instead of rigid abstractions.
+- **Generalization:** attention/transformer, optimizer and derivative probes extend beyond convolution and recurrent validation models. All-masked behavior is version/backend-specific; the skill requires source-specific adapters, not a universal output replacement.
+- **Regression/contradiction check:** all probes pass their declared invariants and negative controls. An observed mismatch is recorded rather than hidden by loosening a tolerance. No target-model implementation or frozen budget changed.
+- **Result:** concrete cross-architecture gaps fixed with official behavior and bounded executable evidence; no accelerator inference is made.

@@ -9,7 +9,7 @@ Read source implementation and installed framework behavior, not names alone. So
 | PyTorch modules | `named_parameters`, buffers, submodules, training flags, hooks, parametrizations and actual caller form the contract. `state_dict` is not necessarily the entire runtime state. Inspect persistent/nonpersistent buffers. |
 | Flax Linen | Separate `params`, `batch_stats`, cache and other collections. `init` and `apply` differ; mutable collection outputs must be threaded into the next call. Initialization may suppress normal state updates. |
 | Flax NNX | Distinguish graph structure/aliasing from variable state and RNG objects. Use documented split/merge/state/filter APIs; do not flatten an object graph as independent leaves and lose sharing. |
-| Equinox | Separate differentiable arrays, nondifferentiable arrays and static metadata; use filtered transforms or explicit partition/combine. A float array is not automatically a trainable parameter. |
+| Equinox | Separate differentiable arrays, nondifferentiable arrays and static metadata; use filtered transforms or explicit partition/combine. Thread `eqx.nn.State` for stateful layers; immutability does not mean absence of state. A float array is not automatically a trainable parameter. |
 | Haiku | `transform` versus `transform_with_state`, initialization keys, RNG sequences and state-return conventions matter. Transform stateful functions before applying JAX transforms; avoid tracing side effects through raw module construction. |
 | Tied weights | Keep one parameter identity, not two equal initial arrays. Check aliases, sum all gradient contributions once, create one optimizer slot, and reconstruct ties after load. |
 | Mutations/views | `.detach()` removes gradient tracking but can share storage; `stop_gradient` is not a promise of copied storage. In-place operations, hooks and view aliasing require an observable-behavior decision. Do not replace a view with an independent parameter. |
@@ -29,7 +29,7 @@ Build mapping records with full semantic names. Require exhaustive source dispos
 | Reshape | Logical order, non-contiguous Torch views, flattening sequence/batch order and channel-last memory format are distinct. | Transposed/sliced inputs and position-coded values. |
 | Einsum | Ellipsis behavior, contraction path, preferred accumulator dtype and precision differ. Mathematical notation alone does not fix reduction order. | Explicit output indices, tiny direct contraction oracle, then production-shaped reduction. |
 | Embedding | Padding indices, sparse gradients, `max_norm` mutation, frequency scaling and repeated tokens affect gradients. | Repeated/padding tokens, nonzero hidden state, gradients and post-forward weights. |
-| Activation | GELU exact/approximate, ReLU boundary derivatives, complex behavior and saturation can differ. | Non-boundary values first, then boundary behavior separately. |
+| Activation | Torch GELU defaults to `approximate='none'`; JAX GELU defaults to `approximate=True`. Match exact/tanh choice explicitly. ReLU boundary derivatives, complex behavior and saturation can differ. | Non-boundary values first, then boundary behavior separately. |
 
 For transposed convolution, derive axis permutation, spatial reversal if required, stride, dilation, kernel origin and output padding from source semantics. Do not assume a normal-convolution transpose rule is sufficient.
 
@@ -54,6 +54,8 @@ Dropout: distinguish drop probability from keep probability, inverse-keep scalin
 ## Attention, masks and recurrent models
 
 Record Q/K/V axis orders, packed/interleaved head mapping, GQA grouping, scaling, RoPE pairing/base/scaling, positional offsets, logit caps, bias, mask convention, dropout, softmax accumulator dtype and output projection. Boolean masks can mean allowed positions in one API and forbidden positions in another. Additive `-inf`, finite sentinels and fully masked rows are not generally equivalent. Check source-defined all-masked behavior rather than replacing NaNs with zeros.
+
+For native attention, Torch SDPA usually accepts `[batch, heads, sequence, channels]`; JAX `dot_product_attention` accepts `[batch, sequence, heads, channels]`. Both APIs' boolean masks mean allowed positions, unlike some higher-level APIs. Use unequal head/sequence dimensions to expose accidental swaps. A bounded CPU probe on JAX 0.11.1 and Torch 2.14 found equivalent causal nonempty masks but different all-masked-row outputs. This observation is version/backend-specific, not a universal replacement rule. If source requires zero on an empty row, implement an explicit validity-aware adapter and test its gradients; do not blindly substitute `nan_to_num`, finite sentinels or a changed mask.
 
 Validate teacher-forced forward, incremental decode, cache write/read offsets, ragged padding and cache restore separately. Passing teacher-forced logits does not prove decoding-state correctness. Test a nonzero cache/hidden state; zero-state-only tests can hide omitted recurrence. High cosine can coexist with a wrong top token; compare discrete decisions and logit margins.
 

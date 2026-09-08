@@ -1,0 +1,35 @@
+{
+  "evidence_class": "OBSERVED",
+  "backend": "CPU",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "jax": "0.11.1",
+    "optax": "0.2.8"
+  },
+  "checks": {
+    "gelu_default_max_abs": 0.0004731308157341907,
+    "gelu_aligned_max_abs": 4.440892098500626e-16,
+    "attention_layout_and_causal_mask_max_abs": 2.384185791015625e-07,
+    "all_masked": {
+      "torch_all_zero": true,
+      "jax_all_zero": false,
+      "max_abs_difference": 0.7704963088035583
+    },
+    "adamw_parameter_and_moment_parity": {
+      "steps": 3,
+      "max_abs_each_step": [
+        5.551115123125783e-17,
+        1.1102230246251565e-16,
+        2.220446049250313e-16
+      ],
+      "includes_epsilon_dominated_and_zero_gradients": true
+    },
+    "transform_structure": {
+      "scan_retains_cond": true,
+      "batched_vmap_uses_select": true,
+      "scope": "JAXPR evidence, not a hardware timing claim"
+    },
+    "jvp_vjp_duality_error": 2.220446049250313e-16
+  },
+  "status": "PASS"
+}

@@ -32,3 +32,10 @@ Reviewed against current documentation during development on 2026-09-08. Recheck
 - [NablaFuzz](https://github.com/ise-uiuc/NablaFuzz): differential gradient testing; apply numerical-instability guards rather than assuming every discrepancy is a bug.
 
 Do not use target-model implementations from these or other repositories as references during a clean-room validation port. General framework behavior is allowed; target port code and explanations are not.
+
+## Focused semantic counterchecks
+
+- [PyTorch GELU](https://docs.pytorch.org/docs/main/generated/torch.nn.functional.gelu.html) and [JAX GELU](https://docs.jax.dev/en/latest/_autosummary/jax.nn.gelu.html): explicitly align exact/tanh defaults.
+- [JAX attention](https://docs.jax.dev/en/latest/_autosummary/jax.nn.dot_product_attention.html) and [Torch SDPA](https://docs.pytorch.org/docs/main/generated/torch.nn.functional.scaled_dot_product_attention.html): axes, scale, masks and backend restrictions.
+- [JAX cond](https://docs.jax.dev/en/latest/_autosummary/jax.lax.cond.html) and [control flow](https://docs.jax.dev/en/latest/201/control-flow.html): tracing versus execution and batched-predicate lowering.
+- [Equinox stateful example](https://docs.kidger.site/equinox/examples/stateful/) and [state API](https://docs.kidger.site/equinox/api/nn/stateful/): functional state threading is not absence of state.
