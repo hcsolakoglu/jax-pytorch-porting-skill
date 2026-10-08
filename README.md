@@ -10,7 +10,7 @@ Principles: correctness first, cheap failures first, no invented speedups. A slo
 
 Works with Codex, Claude Code, Cursor and other agents that load `SKILL.md` skills.
 
-[Core skill](skills/jax-pytorch-porting/SKILL.md) · [Installation](INSTALL.md) · [Research and comparison](research/synthesis.md) · [Validation evidence](validation/README.md) · [Improvement log](research/iterations.md)
+[Core skill](skills/jax-pytorch-porting/SKILL.md) · [Installation](INSTALL.md) · [Research and comparison](research/synthesis.md) · [Validation evidence](validation/README.md)
 
 ## Install
 
@@ -21,7 +21,7 @@ npx --yes skills@1.5.25 add hcsolakoglu/jax-pytorch-porting-skill \
 
 A local-checkout fallback, ChatGPT ZIP upload, verified discovery paths and Antigravity's product-specific path differences are documented in [INSTALL.md](INSTALL.md). Installation does not require installing JAX, PyTorch or a GPU stack. The optional parity helper requires NumPy only.
 
-For eligible ChatGPT workspaces, upload `dist/skill.zip` through Plugins → Skills → Create → Upload from your computer. Other products do not automatically inherit local skill installations.
+For eligible ChatGPT workspaces, build it with `pip install pyyaml && python tools/package_skill.py` and upload `dist/skill.zip` through Plugins → Skills → Create → Upload from your computer. Other products do not automatically inherit local skill installations.
 
 ## Use
 
@@ -69,7 +69,7 @@ Two genuine ports were derived from pinned original implementations without insp
 
 These are **bounded CPU synthetic-input tests**, not full-dataset accuracy, long training or production accelerator certification. See [scope and commands](validation/README.md), [original-source hashes](validation/originals/manifest.json), [contamination log](validation/contamination-log.md) and [adversarial review](research/adversarial-review.md).
 
-Additional probes expose differing GELU defaults and all-masked attention behavior, verify three AdamW steps, inspect transformed control flow, and test JVP/VJP duality. Comparator negative tests guard overflow, complex NaNs, exact integers and unsupported precision. Saved correctness evidence is fingerprinted to code, budgets and dependencies; stale PASS reports cannot authorize a new benchmark.
+Additional probes expose differing GELU defaults and all-masked attention behavior, verify three AdamW steps, inspect transformed control flow, and test JVP/VJP duality. Comparator negative tests guard overflow, complex NaNs, exact integers and unsupported precision. Saved correctness evidence is fingerprinted to code, budgets and the dependency lock inventory; stale PASS reports cannot authorize a new benchmark.
 
 ### Measured CPU performance, including failures
 
@@ -105,10 +105,11 @@ Research snapshots, framework environments and compiler caches are ignored. The 
 ## Checks and packaging
 
 ```sh
-.venv/bin/python -m pytest -q
-.venv/bin/ruff check tools tests validation skills/jax-pytorch-porting/scripts
-.venv/bin/python tools/check_repo.py
-.venv/bin/python tools/package_skill.py
+pip install numpy pytest pyyaml ruff   # minimal tooling for the cheap checks
+python -m pytest -q
+ruff check tools tests validation skills/jax-pytorch-porting/scripts
+python tools/check_repo.py
+python tools/package_skill.py
 ```
 
 Cheap checks do not import ML frameworks or allocate accelerators. Development environment setup and optional bounded model validation are documented in [validation/README.md](validation/README.md). See [contribution guidance](CONTRIBUTING.md) for evidence and scope rules.

@@ -1,6 +1,6 @@
 # Substantive improvement log
 
-Initial version `0.1.0`, commit `8dc8ece`, contains a complete staged workflow and eight focused references. Later entries record actual changes, not cosmetic renaming. External guidance, direct observations, designed procedures and untested areas remain distinct.
+Initial version `0.1.0`, commit `4d3d368`, contains a complete staged workflow and eight focused references. Later entries record actual changes, not cosmetic renaming. External guidance, direct observations, designed procedures and untested areas remain distinct.
 
 ## Iteration 1: source-oracle sensitivity and state mismatch
 
@@ -31,10 +31,10 @@ Initial version `0.1.0`, commit `8dc8ece`, contains a complete staged workflow a
 
 ## Iteration 4: interruption recovery and evidence-preserving checkpoints
 
-- **Weakness:** a prior final response falsely reported no verified PC work after a tool-discovery failure, despite durable commits and passing validation reports. Local history was ahead of the remote.
-- **Evidence:** recovery inspected `hcsolakoglu/jax-pytorch-porting-skill`, HEAD `238ae95`, five existing commits, PASS reports with 46 ResNet forward, 645 ResNet training and 435 recurrent comparison records. The Local MCP read probe and GitHub identity/visibility query succeeded. No active tracked jobs remained. This establishes an erroneous summary, not the internal cause of the earlier discovery failure.
+- **Weakness:** after a tool-discovery failure, an agent's final report claimed that no verified work existed, although durable commits and passing validation reports did. Local history was also ahead of the remote.
+- **Evidence:** recovery inspected `hcsolakoglu/jax-pytorch-porting-skill`, commit `82da0a4`, five existing commits, PASS reports with 46 ResNet forward, 645 ResNet training and 435 recurrent comparison records. A read probe and a repository visibility query succeeded. No active tracked jobs remained. This establishes an erroneous summary, not the internal cause of the earlier discovery failure.
 - **Proposed/implemented change:** add idempotent recovery rules for missing tools and ambiguous write responses; retain prior proof scope; reconcile HEAD, files, jobs and remote before restart; maintain a compact status note and push substantive stages.
-- **Generalization:** applies to any harness with connection loss, context reset, interrupted writes or stale worker memory. Exact namespaces and backoff are host-dependent; no Local-MCP-specific dependency is imposed on the skill.
+- **Generalization:** applies to any harness with connection loss, context reset, interrupted writes or stale worker memory. Exact namespaces and backoff are host-dependent; no harness-specific dependency is imposed on the skill.
 - **Regression/contradiction check:** no oracle, budget or model implementation changed. Existing commits were pushed and HEAD/origin divergence verified as zero. Bounded retries preserve stopping rules rather than create endless polling.
 - **Result:** real work recovered and backed up; current access verified. Internal root cause of the prior tool failure remains unknown.
 

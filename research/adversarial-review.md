@@ -6,7 +6,7 @@ Reviewed 2026-09-08 by the implementing agent using code, original sources, resu
 
 | Finding | Evidence | Resolution |
 |---|---|---|
-| Tool discovery failure erased previously verified work in a final response | Actual private repo, commits and passing reports contradicted the message | Reconcile durable state, preserve proof scope, inspect ambiguous writes before retries, push checkpoints |
+| Tool discovery failure erased previously verified work in a final response | Repository commits and passing reports contradicted the message | Reconcile durable state, preserve proof scope, inspect ambiguous writes before retries, push checkpoints |
 | Complex NaNs hid an incorrect finite component | Negative test failed before repair | Componentwise exceptional comparison; regression passes |
 | Overflowed error and tolerance could produce false success | Negative test failed before repair | Reject nonfinite comparison arithmetic; regression passes |
 | Wide floating oracle silently narrowed to FP64 | Negative test failed before repair | Unsupported extended precision fails closed |

@@ -11,10 +11,10 @@ npx --yes skills@1.5.25 add hcsolakoglu/jax-pytorch-porting-skill \
 
 The pinned installer release was exercised with the local skill path in a temporary HOME. It created `~/.agents/skills/jax-pytorch-porting` and a Claude symlink under `~/.claude/skills/`; file hashes matched. Cursor and Codex use the shared directory, so separate `.cursor` or `.codex` copies were unnecessary. No actual user-global directory was modified. This verifies installation mechanics, not agent quality or every harness version. See [observed result](research/installation-smoke.json).
 
-If `npx` cannot reach GitHub or you prefer a pinned checkout, clone once, then install from that checkout:
+If you prefer a pinned or offline checkout, clone once, then install from that checkout:
 
 ```sh
-gh repo clone hcsolakoglu/jax-pytorch-porting-skill
+git clone https://github.com/hcsolakoglu/jax-pytorch-porting-skill
 cd jax-pytorch-porting-skill
 npx --yes skills@1.5.25 add ./skills/jax-pytorch-porting \
   --skill jax-pytorch-porting --global --agent codex claude-code cursor --yes
@@ -58,9 +58,9 @@ For Claude's manual installation, use `.claude/skills/` instead. Use the matchin
 
 ### ChatGPT and remote environments
 
-Upload `dist/skill.zip` through Plugins → Skills → Create → Upload from your computer where your account/workspace supports uploaded skills. Availability and permission differ by plan, workspace and surface. Upload is scanned and may require review. Installing into local Codex directories does not install a skill into ChatGPT web. This project did not perform a ChatGPT UI upload or change workspace settings.
+Build the bundle with `pip install pyyaml && python tools/package_skill.py`, then upload `dist/skill.zip` through Plugins → Skills → Create → Upload from your computer where your account/workspace supports uploaded skills. Availability and permission differ by plan, workspace and surface. Upload is scanned and may require review. Installing into local Codex directories does not install a skill into ChatGPT web. This project did not perform a ChatGPT UI upload or change workspace settings.
 
-Cursor's official docs distinguish local `~/.agents/skills/` from optional Cloud Agent syncing of `~/.cursor/skills/`. Use repository-scoped skills or approved worker-image installation for remote execution rather than assuming local home-directory files are present. Do not enable cloud syncing or publish this private repository without authorization.
+Cursor's official docs distinguish local `~/.agents/skills/` from optional Cloud Agent syncing of `~/.cursor/skills/`. Use repository-scoped skills or approved worker-image installation for remote execution rather than assuming local home-directory files are present.
 
 ## Portability contract
 
