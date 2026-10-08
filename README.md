@@ -2,7 +2,7 @@
 
 [![Checks](https://github.com/hcsolakoglu/jax-pytorch-porting-skill/actions/workflows/checks.yml/badge.svg)](https://github.com/hcsolakoglu/jax-pytorch-porting-skill/actions)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-![Version 1.0.0](https://img.shields.io/badge/version-1.0.0-informational.svg)
+![Version 1.0.1](https://img.shields.io/badge/version-1.0.1-informational.svg)
 
 An agent skill for **native model migration between PyTorch and JAX**, in both directions. It guides a coding agent through inference, training, checkpoint conversion, numerical parity, gradient and optimizer validation, compiler behavior and fair performance measurement.
 
@@ -119,7 +119,3 @@ Cheap checks do not import ML frameworks or allocate accelerators. Development e
 A skill is guidance plus small utilities, not an automatic universal converter. CPU tests cover selected configurations; custom kernels, quantization, sparse operations, large distributed jobs and other precision modes require their own gates. No prospective multi-harness agent trial, independent competitor scoring or full training convergence study was performed. Neither an overall documentation score nor a passing small-model test authorizes an untested production claim.
 
 Original project material follows [LICENSE](LICENSE); vendored originals and derived validation ports retain their separate licenses in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Do not commit private source checkpoints or credentials.
-
-## Related
-
-[ArchCopilot](https://github.com/hcsolakoglu/archcopilot), a companion agent-driven CLI for IFC-based architecture workflows, follows the same evidence-first approach.
