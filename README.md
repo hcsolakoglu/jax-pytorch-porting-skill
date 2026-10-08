@@ -1,8 +1,14 @@
 # JAX ↔ PyTorch Model Porting
 
-An evidence-driven agent skill for **native model migration in both directions**, covering inference, training, checkpoint conversion, numerical parity, gradient and optimizer validation, compiler behavior and fair performance measurement.
+[![Checks](https://github.com/hcsolakoglu/jax-pytorch-porting-skill/actions/workflows/checks.yml/badge.svg)](https://github.com/hcsolakoglu/jax-pytorch-porting-skill/actions)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Version 1.0.0](https://img.shields.io/badge/version-1.0.0-informational.svg)
 
-**Correctness first. Cheap failures first. No invented speedups.** A slower correct port does not pass a required no-regression performance gate.
+An agent skill for **native model migration between PyTorch and JAX**, in both directions. It guides a coding agent through inference, training, checkpoint conversion, numerical parity, gradient and optimizer validation, compiler behavior and fair performance measurement.
+
+Principles: correctness first, cheap failures first, no invented speedups. A slower correct port does not pass a required no-regression performance gate.
+
+Works with Codex, Claude Code, Cursor and other agents that load `SKILL.md` skills.
 
 [Core skill](skills/jax-pytorch-porting/SKILL.md) · [Installation](INSTALL.md) · [Research and comparison](research/synthesis.md) · [Validation evidence](validation/README.md) · [Improvement log](research/iterations.md)
 
@@ -50,9 +56,9 @@ For existing ports, ask for first-divergence localization, training-step parity,
 | Compilers and hardware | JAX jit/scan/vmap/pmap/shard_map/sharding/XLA and PyTorch compile/AOTAutograd/Inductor; risk-based CUDA/GPU/TPU/distributed procedures |
 | Agent reliability | Fast-fail hierarchy, bounded hypotheses, anti-contamination, incumbent retention, tool-state recovery, ownership-aware cleanup and durable evidence |
 
-The core contains roughly 1,500 words, with eight references loaded only when needed. It does not force an agent model, provider, subagent topology or a particular JAX module library.
+The core `SKILL.md` is about 1,500 words, with eight references loaded only when needed. It does not force a model, provider, subagent setup or JAX module library.
 
-## Actual development validation
+## Validation
 
 Two genuine ports were derived from pinned original implementations without inspecting existing target-framework ports:
 
@@ -79,7 +85,7 @@ Raw samples, first-call costs, input hashes and limits are retained in [benchmar
 
 ## Research and comparison
 
-The ecosystem snapshot retrieved 371 files, including 208 skill entrypoints screened by metadata. Twenty-five related skills were assessed across **20 criteria, 500 individual scores**, with pinned source links, pros and cons. [Full comparison](research/competitors.md) distinguishes documented task fitness from controlled agent success. Our self-assessment is 79/100 under that rubric, not an independently established global ranking.
+The ecosystem snapshot retrieved 371 files, including 208 skill entrypoints screened by metadata. Twenty-five related skills were assessed across **20 criteria, 500 individual scores**, with pinned source links, pros and cons. [Full comparison](research/competitors.md) distinguishes documented task fitness from controlled agent success. The scores are the author's own assessment under that rubric, not an independent ranking.
 
 [Trace analysis](research/agent-traces.md) reviews twelve complete published KernelBench trajectories, totaling 120 attempts, including successful recovery and repeated failure. It separates released-code observations, published aggregate findings, our design inferences and missing trace evidence. No large benchmark was rerun.
 
@@ -112,3 +118,7 @@ Cheap checks do not import ML frameworks or allocate accelerators. Development e
 A skill is guidance plus small utilities, not an automatic universal converter. CPU tests cover selected configurations; custom kernels, quantization, sparse operations, large distributed jobs and other precision modes require their own gates. No prospective multi-harness agent trial, independent competitor scoring or full training convergence study was performed. Neither an overall documentation score nor a passing small-model test authorizes an untested production claim.
 
 Original project material follows [LICENSE](LICENSE); vendored originals and derived validation ports retain their separate licenses in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Do not commit private source checkpoints or credentials.
+
+## Related
+
+[ArchCopilot](https://github.com/hcsolakoglu/archcopilot), a companion agent-driven CLI for IFC-based architecture workflows, follows the same evidence-first approach.
