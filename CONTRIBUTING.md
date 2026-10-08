@@ -20,4 +20,4 @@ Record source revision, dependency versions and measured scope. Label EXTERNAL, 
 
 For competitor updates, apply the same versioned rubric to every row. Do not score by keyword frequency or parent-repository popularity. Distinguish retrieval, metadata screening, full entrypoint review and controlled execution.
 
-Do not commit secrets, private datasets, source checkpoints, raw conversation dumps, caches or machine-specific credentials. Keep this repository private unless its owner explicitly authorizes publication. Report suspected secret exposure privately through an authorized owner channel, not by pasting credentials into an issue. Do not run untrusted setup scripts or unrestricted pickle loaders.
+Do not commit secrets, private datasets, source checkpoints, raw conversation dumps, caches or machine-specific credentials. Report suspected secret exposure or security issues privately through GitHub private vulnerability reporting (Security tab), not by pasting credentials into an issue. Do not run untrusted setup scripts or unrestricted pickle loaders.

@@ -154,7 +154,7 @@ Revision `f7bd40a760076fbb6e129a2e650245678bca5255`; entry SHA256 `3bbee57ff5f34
 
 **Strengths:** Direct PyTorch-to-JAX/Equinox workflow with captured real module inputs, bottom-up conversion, checkpoint serialization and scan guidance. Stronger direct task fit than generic framework tips.
 
-**Limitations:** One direction only; optimizer transition validation is thin. Several blanket rules are unsafe: GELU defaults differ, scalar cond inside scan does not inherently execute both branches, Equinox supports explicit state, and dictionaries are valid pytrees. Fixed tolerances and oversized entrypoint reduce reliability.
+**Limitations:** One direction only; optimizer transition validation is thin. Several blanket rules are, in our review, overbroad or contested: GELU defaults differ, scalar cond inside scan does not inherently execute both branches, Equinox supports explicit state, and dictionaries are valid pytrees. Fixed tolerances and oversized entrypoint reduce reliability.
 
 **Inspected evidence:** Full gist entrypoint; bottom-up parity, serialization, scan, operation mappings and common-issue sections. Technical counterchecks are in semantic-probes.json and synthesis.md.
 
@@ -374,7 +374,7 @@ Revision `7b7337a123f8711aa8e3d0452351d8fd30dde4b7`; entry SHA256 `402ec2a63a6ac
 
 **Strengths:** Risk-based discussion of cancellation, accumulation and stable softmax/variance; adversarial value distributions and higher-precision references.
 
-**Limitations:** Contains incorrect FP32 subnormal and low-precision digit claims; unconditional logit clipping and variance replacement can change source semantics. Several uncalibrated numeric rules; no standard frontmatter.
+**Limitations:** Reviewer judgment, not independently verified against upstream: some FP32 subnormal and low-precision digit statements may be inaccurate and need checking; unconditional logit clipping and variance replacement can change source semantics. Several uncalibrated numeric rules; no standard frontmatter.
 
 **Inspected evidence:** Full risk taxonomy and common-failure sections; numerical claims cross-checked against framework type information and official precision documentation.
 

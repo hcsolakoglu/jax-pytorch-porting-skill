@@ -13,7 +13,7 @@ npx --yes skills@1.5.25 add hcsolakoglu/jax-pytorch-porting-skill \
   --skill jax-pytorch-porting --global --agent codex claude-code cursor --yes
 ```
 
-This repository is private: authenticate using your existing Git credential helper. A local-checkout fallback, ChatGPT ZIP upload, verified discovery paths and Antigravity's product-specific path differences are documented in [INSTALL.md](INSTALL.md). Installation does not require installing JAX, PyTorch or a GPU stack. The optional parity helper requires NumPy only.
+A local-checkout fallback, ChatGPT ZIP upload, verified discovery paths and Antigravity's product-specific path differences are documented in [INSTALL.md](INSTALL.md). Installation does not require installing JAX, PyTorch or a GPU stack. The optional parity helper requires NumPy only.
 
 For eligible ChatGPT workspaces, upload `dist/skill.zip` through Plugins → Skills → Create → Upload from your computer. Other products do not automatically inherit local skill installations.
 
@@ -111,4 +111,4 @@ Cheap checks do not import ML frameworks or allocate accelerators. Development e
 
 A skill is guidance plus small utilities, not an automatic universal converter. CPU tests cover selected configurations; custom kernels, quantization, sparse operations, large distributed jobs and other precision modes require their own gates. No prospective multi-harness agent trial, independent competitor scoring or full training convergence study was performed. Neither an overall documentation score nor a passing small-model test authorizes an untested production claim.
 
-Original project material follows [LICENSE](LICENSE); vendored originals and derived validation ports retain their separate licenses in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Do not publish private source checkpoints, credentials or research artifacts without authorization.
+Original project material follows [LICENSE](LICENSE); vendored originals and derived validation ports retain their separate licenses in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Do not commit private source checkpoints or credentials.

@@ -4,8 +4,6 @@ Verified 2026-09-08 against official documentation, installer source and an isol
 
 ## Recommended: one shared local installation
 
-With access to this private repository already configured through your Git credential helper:
-
 ```sh
 npx --yes skills@1.5.25 add hcsolakoglu/jax-pytorch-porting-skill \
   --skill jax-pytorch-porting --global --agent codex claude-code cursor --yes
@@ -13,7 +11,7 @@ npx --yes skills@1.5.25 add hcsolakoglu/jax-pytorch-porting-skill \
 
 The pinned installer release was exercised with the local skill path in a temporary HOME. It created `~/.agents/skills/jax-pytorch-porting` and a Claude symlink under `~/.claude/skills/`; file hashes matched. Cursor and Codex use the shared directory, so separate `.cursor` or `.codex` copies were unnecessary. No actual user-global directory was modified. This verifies installation mechanics, not agent quality or every harness version. See [observed result](research/installation-smoke.json).
 
-For private-repository authentication or network problems, clone once using existing credentials, then install from that checkout:
+If `npx` cannot reach GitHub or you prefer a pinned checkout, clone once, then install from that checkout:
 
 ```sh
 gh repo clone hcsolakoglu/jax-pytorch-porting-skill
